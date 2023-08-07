@@ -25,6 +25,7 @@ urlpatterns = [
     path('verify',include('maketripsapp.urls')),
     path('signup',include('maketripsapp.urls')),
     path('home',include('maketripsapp.urls')),
-    path('register',include('maketripsapp.urls'))
+    path('register',include('maketripsapp.urls')),
+    path('gallery',include('maketripsapp.urls'))
 
 ]

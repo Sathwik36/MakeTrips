@@ -5,67 +5,252 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MakeTrips</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz@1,6..12&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/b07db3e689.js" crossorigin="anonymous"></script>
+
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       position: relative;
     }
 
-    .navbar-fixed-top {
-      top: 0;
-      border-width: 0 0 1px;
-      position: sticky;
-    }
-
     #section1 {
       padding-top: 50px;
-      height: 500px;
-      color: #fff;
-      background-color: #1E88E5;
     }
 
     #section2 {
       padding-top: 50px;
-      height: 500px;
-      color: #fff;
-      background-color: #673ab7;
+      margin-bottom: 30px;
     }
 
     #section3 {
-      padding-top: 50px;
-      height: 500px;
-      color: #fff;
-      background-color: #ff9800;
+      padding-top: 30px;
     }
 
     #section4 {
-      padding-top: 50px;
-      height: 500px;
-      color: #fff;
-      background-color: #00bcd4;
+      padding-top: 30px;
     }
 
     #section5 {
-      padding-top: 50px;
-      height: 500px;
-      color: #fff;
-      background-color: #009688;
+      padding-top: 30px;
+
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+
+    }
+
+    .nav-link {
+      color: white;
+    }
+
+    .nav-link:hover {
+      color: red;
+      font-size: var(--bs-nav-link-font-size);
+      font-weight: var(--bs-nav-link-font-weight);
+    }
+
+    .carousel-caption h1 {
+      font-family: serif;
+      font-size: 100px;
+    }
+
+    .carousel-item img {
+      height: 41em;
+    }
+
+    .container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .container .forimg,
+    .forform {
+      width: 45%;
+    }
+
+    .forimg img {
+      width: 100%;
+    }
+
+    .buttn {
+      width: 100%;
+      margin-top: 10px;
+      text-decoration: none;
+      border: 6px solid transparent;
+      border-image: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+      border-image-slice: 1;
+    }
+
+    .buttn:hover {
+      transition: .5s;
+      background: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+      color: white;
+      transform: scale(1.0);
+      box-shadow: 0 0 24px 0 blue;
+
+    }
+
+    .heading {
+      background: url(/static/background.jpg) center center/cover no-repeat;
+      color: #de466c;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font: normal 800 100px Fira Code, Sans-serif;
+      display: flex;
+      justify-content: center;
+    }
+
+
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .box-container .box {
+      overflow: hidden;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+      height: 20rem;
+      flex: 1 1 30%;
+      position: relative;
+      padding: 5px;
+    }
+
+    .box-container .box img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .box-container .box .cont {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .7);
+      padding: 2rem;
+      padding-top: 2rem;
+    }
+
+    .box-container .box .cont h3 {
+      font-size: 2.5rem;
+      color: blue;
+    }
+
+    .box-container .box .cont p {
+      font-size: 1.5rem;
+      color: white;
+      padding: .5rem 0;
+    }
+
+    .box-container .box:hover .cont {
+      transition: .5s;
+      top: 0;
+    }
+
+    .pcard {
+      margin-top: 15px;
+      padding: 0 6px;
+      float: left;
+      width: 24%;
+    }
+
+    .pcardin {
+      background: white;
+      border: 3px solid transparent;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pcardin img {
+      width: 100%;
+      height: 250px;
+    }
+
+    .pcardin a {
+      text-align: center;
+    }
+
+    .pcard:hover {
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+    .rcontainer{
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .rcard{
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .rcard .rimg{
+      width: 100%;
+      height: 200px;
+    }
+
+
+    @media only screen and (max-width: 700px) {
+      .pcard {
+        width: 49.99999%;
+        margin: 6px 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .container .forimg,
+      .forform {
+        width: 100%;
+      }
+
+      .pcard {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary  navbar-fixed-top" aria-label="Thirteenth navbar example">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg" aria-label="Thirteenth navbar example">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
         aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      <a class="navbar-brand col-lg-3 me-0" href="#" style="font-family: 'Nunito Sans', sans-serif;"><span
+          style="color: red;">M</span><span style="color: white;">ake</span><span style="color: red;">T</span><span
+          style="color: white;">rips</span></a>
       <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-        <a class="navbar-brand col-lg-3 me-0" href="#">MakeTrips</a>
-        <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+        <ul class="navbar-nav col-lg-6 " style="justify-content: space-evenly;">
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="#section1">Home</a>
           </li>
@@ -90,45 +275,356 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li> -->
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end" style="right: 0; position: absolute;">
+            <form class="d-flex" role="search">
+              <input class="form-control "
+                style="border-radius: 2rem;  border-top-right-radius: 0;border-bottom-right-radius: 0;" type="search"
+                placeholder="Search" aria-label="Search">
+              <button class="btn"
+                style="margin-right: 2px; background: white; border: transparent; border-radius: 2rem; border-bottom-left-radius: 0;border-top-left-radius: 0;"
+                type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            {% if user.is_authenticated%}
+            <a class="btn btn-primary" style="border-radius: 2rem;" href="/Logout">LOGOUT</a>
+            {% else %}
+            <a class="btn btn-primary" style="border-radius: 2rem;" href="/Login">LOGIN</a>
+            {% endif %}
+          </div>
         </ul>
-        <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary mr-2" style="margin-right: 2px;" type="submit">Search</button>
-          </form>
-          {% if user.is_authenticated%}
-          <a class="btn btn-primary" href="/Logout">LOGOUT</a>
-          {% else %}
-          <a class="btn btn-primary" href="/Login">LOGIN</a>
-          {% endif %}
-        </div>
       </div>
     </div>
   </nav>
-  <div id="section1" class="container-fluid">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni corrupti maxime cupiditate illum ab qui tenetur
-      sunt necessitatibus molestias eligendi unde velit fugiat impedit, dolorum fugit nostrum totam labore asperiores.
-      Sint et dignissimos temporibus nisi perspiciatis aspernatur aliquid impedit quam.</p>
+
+  <!-- S1 -->
+  <div id="section1" class="container-fluid ">
+    <div id="carouselExampleCaptions" class="carousel slide" style="height: 100%;">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+          aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/static/mauritiusp.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>MAURITIUS</h1>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/london.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>LONDON</h1>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/dubai.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>DUBAI</h1>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/switzerland.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>SWITZERLAND</h1>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/paris.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>PARIS</h1>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   </div>
+
+  <!-- S2 -->
   <div id="section2" class="container-fluid">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni corrupti maxime cupiditate illum ab qui tenetur
-      sunt necessitatibus molestias eligendi unde velit fugiat impedit, dolorum fugit nostrum totam labore asperiores.
-      Sint et dignissimos temporibus nisi perspiciatis aspernatur aliquid impedit quam.</p>
+    <p class="heading">BOOK NOW</p>
+    <div class="container">
+      <div class="forimg">
+        <img src="/static/booking.jpg" alt="">
+      </div>
+      <div class="forform">
+        <form action="" method="POST">
+          <div class="mb-3">
+            <label for="from" class="form-label">From</label>
+            <input type="text" required class="form-control" id="from">
+          </div>
+          <div class="mb-3">
+            <label for="to" class="form-label">To</label>
+            <input type="Text" required class="form-control" id="to">
+          </div>
+          <div class="mb-3">
+            <label for="departure" class="form-label">Departure</label>
+            <input type="date" required class="form-control" id="departure">
+          </div>
+          <div class="mb-3">
+            <label for="return" class="form-label">Return</label>
+            <input type="date" required class="form-control" id="return">
+          </div>
+          <div class="mb-3">
+            <label for="nuofpersons" class="form-label">Number of Persons</label>
+            <input type="number" required class="form-control" id="nuofpersons">
+          </div>
+          <input type="submit" class="buttn" value="Book Now">
+        </form>
+      </div>
+    </div>
   </div>
+
+  <!-- S3 -->
   <div id="section3" class="container-fluid">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni corrupti maxime cupiditate illum ab qui tenetur
-      sunt necessitatibus molestias eligendi unde velit fugiat impedit, dolorum fugit nostrum totam labore asperiores.
-      Sint et dignissimos temporibus nisi perspiciatis aspernatur aliquid impedit quam.</p>
+    <p class="heading">GALLERY</p>
+    <div class="box-container">
+      <div class="box">
+        <img src="/static/victoriafalls.jpg" alt="">
+        <div class="cont">
+          <h3>VICTORIA FALLS</h3>
+          <p>Victoria Falls is a waterfall on the Zambezi River in southern Africa, which provides habitat for several
+            unique species.</p>
+          <a href="#" class="buttn">SEE MORE</a>
+        </div>
+      </div>
+      <div class="box">
+        <img src="/static/maldives.jpg" alt="">
+        <div class="cont">
+          <h3>MALDIVES</h3>
+          <p>The Maldives, officially the Republic of Maldives, is an archipelagic state and country in South Asia,
+            situated in the Indian Ocean.</p>
+          <a href="#" class="buttn">SEE MORE</a>
+        </div>
+      </div>
+      <div class="box">
+        <img src="/static/tajmahal.jpg" alt="">
+        <div class="cont">
+          <h3>TAJ MAHAL</h3>
+          <p>The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar
+            Pradesh, India.</p>
+          <a href="#" class="buttn">SEE MORE</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <img src="/static/mountfuji.jpg" alt="">
+        <div class="cont">
+          <h3>MOUNT FUJI</h3>
+          <p>Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo.</p>
+          <a href="#" class="buttn">SEE MORE</a>
+        </div>
+      </div>
+      <div class="box">
+        <img src="/static/grandcanyon.jpg" alt="">
+        <div class="cont">
+          <h3>GRAND CANYON</h3>
+          <p>The Grand Canyon in Arizona is a natural formation distinguished by layered bands of red rock.</p>
+          <a href="#" class="buttn">SEE MORE</a>
+        </div>
+      </div>
+      <div class="box">
+        <img src="/static/cliffsosmoher.jpg" alt="">
+        <div class="cont">
+          <h3>CLIFFS OF MOHER</h3>
+          <p>The Cliffs of Moher are sea cliffs located at the southwestern edge of the Burren region in County Clare,
+            Ireland. </p>
+          <a href="#" class="buttn">SEE MORE</a>
+        </div>
+      </div>
+    </div>
+    <a href="/gallery" class="buttn"
+      style="display: flex; width: 100%; color: black; justify-content: center; margin-bottom: 10px;">View More</a>
   </div>
+
+  <!-- S4 -->
   <div id="section4" class="container-fluid">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni corrupti maxime cupiditate illum ab qui tenetur
-      sunt necessitatibus molestias eligendi unde velit fugiat impedit, dolorum fugit nostrum totam labore asperiores.
-      Sint et dignissimos temporibus nisi perspiciatis aspernatur aliquid impedit quam.</p>
+    <p class="heading">PACKAGES</p>
+    <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/indiap.jpg" alt="">
+          <h3>INDIA</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 3,49,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/parisp.jpg" alt="">
+          <h3>PARIS</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 1,49,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/icelandsp.jpg" alt="">
+          <h3>ICELANDS</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 2,09,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/newzealandp.jpg" alt="">
+          <h3>NEW ZEALANDS</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 1,89,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/dubaip.jpg" alt="">
+          <h3>DUBAI</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 2,99,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/switzerlandp.jpg" alt="">
+          <h3>SWITZERLAND</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 2,49,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/londonp.jpg" alt="">
+          <h3>LONDON</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 1,89,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcardin">
+          <img src="/static/newyorkcity.jpg" alt="">
+          <h3>NEW YORK CITY</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, ipsum.</p>
+          <div>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <b>₹ 2,29,999.00/-</b>
+          <a href="" class="buttn">Book Now</a>
+        </div>
+      </div>
+
+    </div>
   </div>
+  <!-- S5 -->
   <div id="section5" class="container-fluid">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni corrupti maxime cupiditate illum ab qui tenetur
-      sunt necessitatibus molestias eligendi unde velit fugiat impedit, dolorum fugit nostrum totam labore asperiores.
-      Sint et dignissimos temporibus nisi perspiciatis aspernatur aliquid impedit quam.</p>
+    <p class="heading">REVIEWS</p>
+    <div class="rcontainer">
+      <div class="rbox">
+        <div class="rimg">
+          <img src="/static/mreview.jpg" alt="">
+        </div>
+        <h3>Name</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam soluta voluptate exercitationem consectetur
+          odio saepe labore. Perspiciatis laborum ad earum.</p>
+      </div>
+      <div class="rbox">
+        <div class="rimg">
+          <img src="/static/freview.jpg" alt="">
+        </div>
+        <h3>Name</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam soluta voluptate exercitationem consectetur
+          odio saepe labore. Perspiciatis laborum ad earum.</p>
+      </div>
+      <div class="rbox">
+        <div class="rimg">
+          <img src="/static/mreview.jpg" alt="">
+        </div>
+        <h3>Name</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam soluta voluptate exercitationem consectetur
+          odio saepe labore. Perspiciatis laborum ad earum.</p>
+      </div>
+    </div>
+
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
