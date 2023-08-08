@@ -195,29 +195,218 @@
       text-align: center;
     }
 
-    .pcard:hover {
+    .pcard:hover,
+    .rbox:hover,
+    .blog1:hover,
+    .blog3 .card:hover {
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     }
-    .rcontainer{
+
+    .rcontainer {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 20px;
+    }
+
+    .rbox {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      /* align-items: center; */
+      border: 2px solid transparent;
+    }
+    .rbox .rimg{
+      margin-top: 10px;
+    }
+    .rbox .rimg img {
+      
+      width: 54%;
+      display: inherit;
+      margin: auto;
+      height: 200px;
+      border: 3px solid white;
+      border-radius: 100px
+    }
+
+    .rcontent {
+      padding-left: 15px;
+    }
+
+    footer {
+      margin-top: 20px;
+      background: black;
+      padding-top: 15px;
+    }
+
+    .aboutb {
+      color: white;
       display: flex;
       justify-content: space-evenly;
     }
-    .rcard{
-      width: 30%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .rcard .rimg{
-      width: 100%;
-      height: 200px;
+
+    .fdesc {
+      width: 60%;
     }
 
+    .fnav {
+      border-left: 2px solid white;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .fnav a {
+      text-decoration: none;
+      color: white;
+      font-size: medium;
+    }
+
+    .fnav a:hover {
+      color: blue;
+    }
+
+    .bottomfooter {
+      display: flex;
+      justify-content: space-evenly;
+      padding-bottom: 15px;
+    }
+
+    .bottomfooter div i {
+      margin-right: 10px;
+    }
+
+    .bottomfooter div i:hover {
+      filter: drop-shadow(0px 0px 5px blue);
+      transform: scale(1.25);
+
+    }
+
+    .bottomfooter div i:nth-child(4):hover {
+      filter: drop-shadow(0px 0px 5px red);
+      transform: scale(1.25);
+    }
+
+    .blog1 {
+      background: url(/static/blog1.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 15px;
+      width: 60%;
+      margin: auto;
+      height: 500px;
+    }
+
+    .blog1 .desc {
+      background: white;
+      position: absolute;
+      width: 30%;
+      margin-bottom: 0;
+      left: 20%;
+
+    }
+
+    .blog2cont {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .blog2 {
+      width: 40%;
+      margin-top: 20px;
+      height: 300px;
+
+    }
+
+    .blog2 img {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .blog2 .b2desc {
+      color: white;
+      position: absolute;
+      display: inline-block;
+      width: 15%;
+      left: 8%;
+      padding: 15px 0px;
+    }
+
+    .blog2:nth-child(2) .b2desc {
+      left: 54%;
+    }
+
+    .blog2 img:hover {
+      transform: scale(1.05);
+      transition: .3s;
+    }
+
+    .blog3 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      margin-block: 2rem;
+      gap: 2rem;
+    }
+
+    .blog3 img {
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .blog3 .card {
+      display: flex;
+      flex-direction: column;
+      width: clamp(20rem, calc(20rem + 2vw), 22rem);
+      overflow: hidden;
+      box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+      border-radius: 1em;
+      background: #ECE9E6;
+      background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+    }
+
+    .card__body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .card__body h4 {
+      font-size: 1.5rem;
+      text-transform: capitalize;
+    }
+
+    .card__footer {
+      display: flex;
+      padding: 1rem;
+      margin-top: auto;
+    }
+
+    .user {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .user__image {
+      border-radius: 50%;
+    }
+
+    .user__info>small {
+      color: #666;
+    }
 
     @media only screen and (max-width: 700px) {
       .pcard {
         width: 49.99999%;
         margin: 6px 0;
+      }
+
+      .rbox {
+        width: 40%;
       }
     }
 
@@ -231,8 +420,29 @@
         width: 100%;
       }
 
-      .pcard {
+      .pcard,
+      .rbox {
         width: 100%;
+      }
+
+      .rcontainer {
+        flex-direction: column;
+      }
+
+      .blog2cont {
+        flex-direction: column;
+      }
+
+      .blog2 {
+        width: 100%;
+      }
+
+      .blog2 .b2desc {
+        width: 40%;
+      }
+
+      .blog2 .b2desc:nth-child(2) {
+        left: 8%;
       }
     }
   </style>
@@ -595,37 +805,235 @@
 
     </div>
   </div>
+
   <!-- S5 -->
   <div id="section5" class="container-fluid">
     <p class="heading">REVIEWS</p>
     <div class="rcontainer">
       <div class="rbox">
         <div class="rimg">
-          <img src="/static/mreview.jpg" alt="">
+          <img src="/static/klaus.jpg" alt="">
         </div>
-        <h3>Name</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam soluta voluptate exercitationem consectetur
-          odio saepe labore. Perspiciatis laborum ad earum.</p>
+        <div class="rcontent">
+          <h3>Klaus</h3>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <p>The trip was amazing! The scenery was breathtaking and the tour guide was very knowledgeable and friendly.
+          </p>
+        </div>
       </div>
       <div class="rbox">
         <div class="rimg">
-          <img src="/static/freview.jpg" alt="">
+          <img src="/static/caroline.jpg" alt="">
         </div>
-        <h3>Name</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam soluta voluptate exercitationem consectetur
-          odio saepe labore. Perspiciatis laborum ad earum.</p>
+        <div class="rcontent">
+          <h3>Caroline</h3>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <p>The food on the cruise was delicious and the entertainment was top-notch. I would highly recommend this
+            experience!</p>
+        </div>
       </div>
       <div class="rbox">
         <div class="rimg">
-          <img src="/static/mreview.jpg" alt="">
+          <img src="/static/stefan.jpg" alt="">
         </div>
-        <h3>Name</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam soluta voluptate exercitationem consectetur
-          odio saepe labore. Perspiciatis laborum ad earum.</p>
+        <div class="rcontent">
+          <h3>Stefan</h3>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <p>The hotel was disappointing. The room was small and outdated, and the staff was unhelpful.</p>
+        </div>
       </div>
+    </div>
+    <div class="rcontainer">
+      <div class="rbox">
+        <div class="rimg">
+          <img src="/static/rebekah.jpg" alt="">
+        </div>
+        <div class="rcontent">
+          <h3>Rebakah</h3>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <p>The city tour was informative and fun, but the guide was hard to understand at times due to their thick
+            accent.</p>
+        </div>
+      </div>
+      <div class="rbox">
+        <div class="rimg">
+          <img src="/static/damon.jpg" alt="">
+        </div>
+        <div class="rcontent">
+          <h3>Damon</h3>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <p>The transportation was unreliable and caused us to miss out on some of the planned activities. It was a
+            frustrating experience.</p>
+        </div>
+      </div>
+
+      <div class="rbox">
+        <div class="rimg">
+          <img src="/static/hayley.jpg" alt="">
+        </div>
+        <div class="rcontent">
+          <h3>Hayley</h3>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <p>The safari was unforgettable! We saw so many amazing animals and the guide was excellent at spotting them.
+            I would do it again in a heartbeat.</p>
+        </div>
+      </div>
+
     </div>
 
   </div>
+
+  <!-- Blog -->
+  <section>
+    <p class="heading">BLOG</p>
+    <div class="blog1">
+      <div class="desc">
+        <h3>I Left My Career To Become A World Traveller </h3>
+        <p>Traveling is an enriching experience that broadens horizons, exposes new cultures, and creates unforgettable
+          memories.</p>
+        <p style="text-align: end;">-MadMax </p>
+      </div>
+    </div>
+    <div class="blog2cont">
+      <div class="blog2">
+        <img src="/static/mounteverest.jpg" alt="">
+        <div class="b2desc">
+          <h3><b>Mount Everest</b></h3>
+          <p>Climbing Mount Everest is a life-changing experience that requires months of preparation, physical
+            endurance, and mental fortitude. It's a dangerous and challenging journey that tests the limits of human
+            strength and resilience.
+          </p>
+        </div>
+      </div>
+      <div class="blog2">
+        <img src="/static/leaningtower.jpg" alt="">
+        <div class="b2desc">
+          <h3><b>Leaning Tower of Pisa</b></h3>
+          <p>Visiting the Leaning Tower of Pisa is a unique experience that offers stunning views and a chance to see a
+            world-famous architectural icon.
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="blog3">
+      <div class="card">
+        <div class="card__header">
+          <img src="/static/background.jpg" alt="card__image" class="card__image" width="600">
+        </div>
+        <div class="card__body">
+          <h4>What's new in 2022 Tech</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus.
+            Doloremque, nihil! At ea atque quidem!</p>
+        </div>
+        <div class="card__footer">
+          <div class="user">
+            <div class="user__info">
+              <h5>Klaus</h5>
+              <small>2h ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__header">
+          <img src="/static/background.jpg" alt="card__image" class="card__image" width="600">
+        </div>
+        <div class="card__body">
+          <h4>What's new in 2022 Tech</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus.
+            Doloremque, nihil! At ea atque quidem!</p>
+        </div>
+        <div class="card__footer">
+          <div class="user">
+            <div class="user__info">
+              <h5>Klaus</h5>
+              <small>2h ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__header">
+          <img src="/static/background.jpg" alt="card__image" class="card__image" width="600">
+        </div>
+        <div class="card__body">
+          <h4>What's new in 2022 Tech</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi perferendis molestiae non nemo doloribus.
+            Doloremque, nihil! At ea atque quidem!</p>
+        </div>
+        <div class="card__footer">
+          <div class="user">
+            <div class="user__info">
+              <h5>Klaus</h5>
+              <small>2h ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- footer  -->
+  <footer>
+    <div class="aboutb">
+      <div class="fdesc">
+        <h3>About</h3>
+        <p>
+          Planning a travel can be exciting and challenging. It involves researching destinations, creating an
+          itinerary, and managing logistics. A successful travel requires careful planning, attention to detail,
+          and strong organizational skills. It is important to consider factors such as budget, transportation,
+          accommodations, and activities. You should also research the local culture, customs, and laws to ensure a
+          smooth and enjoyable trip. To make the most of your travel, consider hiring a travel agent or joining
+          a group tour. They can provide valuable insights and help you navigate unfamiliar territory. With the right
+          planning and preparation, a travel can be a rewarding and unforgettable experience.
+        </p>
+      </div>
+      <div class="fnav">
+        <a href="#section1">Home</a>
+        <a href="#section2">Book</a>
+        <a href="#section3">Gallery</a>
+        <a href="#section4">Packages</a>
+        <a href="#section5">Reviews</a>
+      </div>
+    </div>
+    <hr>
+    <div class="bottomfooter">
+      <span style="color: white;">Copyright &copy; MakeTrips</span>
+      <div>
+        <i class="fa-brands fa-facebook fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-twitter fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-linkedin fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-youtube fa-2xl" style="color: red;"></i>
+      </div>
+    </div>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
     crossorigin="anonymous"></script>
