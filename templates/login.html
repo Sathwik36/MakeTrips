@@ -123,9 +123,14 @@
         }
 
         body {
-            background: url(/static/background.jpg);
+            background: url(/static/bg.jpg);
             background-size: cover;
             background-repeat: no-repeat;
+        }
+        @media only screen and (max-width: 500px){
+            body{
+                background-image: url(/static/bgm.jpg);
+            }
         }
     </style>
 </head>
