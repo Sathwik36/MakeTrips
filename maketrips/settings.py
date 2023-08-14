@@ -77,14 +77,11 @@ WSGI_APPLICATION = 'maketrips.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'maketrip',
-        'USER':'root',
-        'PASSWORD':'sathwik@123',
-        'HOST':'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
