@@ -510,10 +510,11 @@
             </ul>
           </li> -->
           <div class="d-lg-flex col-lg-3 justify-content-lg-end" style="right: 0; position: absolute;">
-            <form class="d-flex" role="search">
-              <input class="form-control "
+            <form class="d-flex" role="search" action="/search" method="POST">
+              {%csrf_token%}
+              <input class="form-control " required name="search_box"
                 style="border-radius: 2rem;  border-top-right-radius: 0;border-bottom-right-radius: 0;" type="search"
-                placeholder="Search" aria-label="Search">
+                placeholder="Search Places"  aria-label="Search">
               <button class="btn"
                 style="margin-right: 2px; background: white; border: transparent; border-radius: 2rem; border-bottom-left-radius: 0;border-top-left-radius: 0;"
                 type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>

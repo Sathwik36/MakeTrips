@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.http import HttpResponse
+from maketripsapp.models import *
 
 # Create your views here.
 def Login(request):
@@ -55,3 +56,11 @@ def home(request):
     return render(request,'home.html')
 def gallery(request):
     return render(request,'gallery.html')
+def search(request):
+    if request.method=="POST":
+        searchedb=request.POST['search_box']
+        place=Place.objects.filter(placename__contains='searchedb').values()
+        context={
+            "place":place
+        }
+        return render(request,'search_temp.html',context)
