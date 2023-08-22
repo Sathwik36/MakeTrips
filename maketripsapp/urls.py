@@ -10,5 +10,6 @@ urlpatterns = [
     path('register',views.register,name="register"),
     path('home',views.home,name="home"),
     path('gallery',views.gallery,name="gallery"),
-    path('search',views.search,name="search")
+    path('search',views.search,name="search"),
+    path('addreview',views.addreview,name="addreview")
 ]

@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from maketripsapp.models import *
 from django.db.models import Q
+from datetime import datetime
 
 
 # Create your views here.
@@ -64,3 +65,20 @@ def search(request):
         place=Place.objects.filter(
             Q(placename__icontains=searchedb) )
         return render(request,'search_temp.html',{'searched':place})
+    
+def addreview(request):
+    if request.method=="POST":
+        username=request.user
+        review_place=request.POST.get('place_visited')
+        rating=request.POST.get('rating')
+        review=request.POST.get('review')
+        myrevw=Myreviews.objects.create(
+            username=username,
+            review_place=review_place,
+            rating_no=rating,
+             review_desc=review,
+            
+        )
+        myrevw.save()
+    return redirect("/home", {'querys':Myreviews.objects.all()})
+    
