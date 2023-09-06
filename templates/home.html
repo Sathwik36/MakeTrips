@@ -1,1146 +1,597 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MakeTrips</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz@1,6..12&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <script src="https://kit.fontawesome.com/b07db3e689.js" crossorigin="anonymous"></script>
-  <script>
-    function validateForm() {
-      var rating = document.forms["rform"]["rating"].value;
-      if (rating > 5) {
-        alert("Please rate between 0-5");
-        return false;
-      }
-    }
-  </script>
-
-  <style>
-    #section1 {
-      padding-top: 50px;
-    }
-
-    #section2 {
-      padding-top: 50px;
-      margin-bottom: 30px;
-    }
-
-    #section3 {
-      padding-top: 30px;
-    }
-
-    #section4 {
-      padding-top: 30px;
-    }
-
-    #section5 {
-      padding-top: 30px;
-
-    }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #333;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 100;
-
-    }
-
-    .nav-link {
-      color: white;
-    }
-
-    .nav-link:hover {
-      color: red;
-      font-size: var(--bs-nav-link-font-size);
-      font-weight: var(--bs-nav-link-font-weight);
-    }
-
-    .carousel-caption h1 {
-      font-family: serif;
-      font-size: 100px;
-    }
-
-    .carousel-item img {
-      height: 41em;
-    }
-
-    .carousel-item p {
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .carousel-item:nth-child(1) p {
-      color: black;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-
-    .container {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    .container .forimg,
-    .forform {
-      width: 45%;
-    }
-
-    .forimg img {
-      width: 100%;
-    }
-
-    .buttn {
-      width: 100%;
-      margin-top: 10px;
-      text-decoration: none;
-      border: 6px solid transparent;
-      border-image: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-      border-image-slice: 1;
-    }
-
-    .buttn:hover {
-      transition: .5s;
-      background: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-      color: white;
-      transform: scale(1.0);
-      box-shadow: 0 0 24px 0 blue;
-
-    }
-
-    .heading {
-      background: url(/static/background.jpg) center center/cover no-repeat;
-      color: #de466c;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font: normal 800 100px Fira Code, Sans-serif;
-      display: flex;
-      justify-content: center;
-    }
-
-
-    .box-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .box-container .box {
-      overflow: hidden;
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
-      height: 20rem;
-      flex: 1 1 30%;
-      position: relative;
-      padding: 5px;
-    }
-
-    .box-container .box img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .box-container .box .cont {
-      position: absolute;
-      top: -100%;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      text-align: center;
-      background-color: rgba(0, 0, 0, .7);
-      padding: 2rem;
-      padding-top: 2rem;
-    }
-
-    .box-container .box .cont h3 {
-      font-size: 2.5rem;
-      color: #00fff8;
-    }
-
-    .box-container .box .cont p {
-      font-size: 1.5rem;
-      color: white;
-      padding: .5rem 0;
-    }
-
-    .box-container .box:hover .cont {
-      transition: .5s;
-      top: 0;
-    }
-
-    .pcard {
-      margin-top: 25px;
-      padding: 0 6px;
-      float: left;
-      width: 22%;
-      border-radius: 20px;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-      margin-bottom: 20px;
-    }
-
-    .pcardin {
-      margin-bottom: 20px;
-      background: white;
-      border: 3px solid transparent;
-      border-radius: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .pcardin img {
-      margin-top: 10px;
-      width: 80%;
-      height: 200px;
-      border-radius: 15px;
-    }
-
-    .pcardin a {
-      text-align: center;
-    }
-
-    .pcard:hover,
-    .rbox:hover,
-    .blog1:hover,
-    .blog3 .card:hover {
-      box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
-    }
-
-    .rcontainer {
-      display: flex;
-      justify-content: space-evenly;
-      margin-bottom: 50px;
-    }
-
-    .rbox {
-      width: 23%;
-      display: flex;
-      flex-direction: column;
-      /* align-items: center; */
-      border: 2px solid transparent;
-      border-radius: 15px;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-      margin-bottom: 15px;
-    }
-
-    .rbox .rimg {
-      margin-top: 10px;
-    }
-
-    .rbox .rimg img {
-
-      width: 54%;
-      display: inherit;
-      margin: auto;
-      height: 200px;
-      border: 3px solid white;
-      border-radius: 50%;
-    }
-
-    .rcontent {
-      padding-left: 15px;
-    }
-
-    .addreview {
-      width: 70%;
-      margin: auto;
-      border-radius: 15px;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-      padding: 10px;
-    }
-
-    footer {
-      margin-top: 20px;
-      background: black;
-      padding-top: 15px;
-    }
-
-    .aboutb {
-      color: white;
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    .fdesc {
-      width: 60%;
-    }
-
-    .fnav {
-      border-left: 2px solid white;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-    }
-
-    .fnav a {
-      text-decoration: none;
-      color: white;
-      font-size: medium;
-    }
-
-    .fnav a:hover {
-      color: blue;
-    }
-
-    .bottomfooter {
-      display: flex;
-      justify-content: space-evenly;
-      padding-bottom: 15px;
-    }
-
-    .bottomfooter div i {
-      margin-right: 10px;
-    }
-
-    .bottomfooter div i:hover {
-      filter: drop-shadow(0px 0px 5px blue);
-      transform: scale(1.25);
-
-    }
-
-    .bottomfooter div i:nth-child(4):hover {
-      filter: drop-shadow(0px 0px 5px red);
-      transform: scale(1.25);
-    }
-
-    .blog1 {
-      background: url(/static/blog1.jpg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      padding: 15px;
-      width: 60%;
-      margin: auto;
-      height: 500px;
-      margin-bottom: 50px;
-    }
-
-    .blog1 .desc {
-      background: white;
-      position: absolute;
-      width: 30%;
-      margin-bottom: 0;
-      left: 20%;
-
-    }
-
-    .blog2cont {
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    .blog2 {
-      width: 40%;
-      margin-top: 20px;
-      height: 300px;
-      margin-bottom: 50px;
-
-    }
-
-    .blog2 img {
-      height: 100%;
-      width: 100%;
-      position: relative;
-    }
-
-    .blog2 .b2desc {
-      color: white;
-      position: absolute;
-      display: inline-block;
-      width: 15%;
-      left: 8%;
-      padding: 15px 0px;
-    }
-
-    .blog2:nth-child(2) .b2desc {
-      left: 54%;
-    }
-
-    .blog2 img:hover {
-      transform: scale(1.05);
-      transition: .3s;
-    }
-
-    .blog3 {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      margin-block: 2rem;
-      gap: 2rem;
-      margin-bottom: 50px;
-    }
-
-    .blog3 img {
-      max-width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .blog3 .card {
-      display: flex;
-      flex-direction: column;
-      width: clamp(20rem, calc(20rem + 2vw), 22rem);
-      overflow: hidden;
-      box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
-      border-radius: 1em;
-      background: #ECE9E6;
-      background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-
-    }
-
-    .card__body {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-    }
-
-    .card__body h4 {
-      font-size: 1.5rem;
-      text-transform: capitalize;
-    }
-
-    .card__footer {
-      display: flex;
-      padding: 1rem;
-      margin-top: auto;
-    }
-
-    .user {
-      display: flex;
-      gap: .5rem;
-    }
-
-    .user__image {
-      border-radius: 50%;
-    }
-
-    .user__info>small {
-      color: #666;
-    }
-
-    @media only screen and (max-width: 700px) {
-      .pcard {
-        width: 49.99999%;
-        margin: 6px 0;
-      }
-
-      .rbox {
-        width: 40%;
-      }
-    }
-
-    @media only screen and (max-width: 500px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .heading {
-        font-size: 64px;
-      }
-
-      .container .forimg,
-      .forform {
-        width: 100%;
-      }
-
-      .box-container {
-        flex-direction: column;
-      }
-
-      .box-container .box .cont p {
-        display: none;
-      }
-
-      .pcard,
-      .rbox {
-        width: 100%;
-      }
-
-      .rcontainer {
-        flex-direction: column;
-      }
-
-      .blog1 {
-        width: 95%;
-      }
-
-      .blog1 .desc {
-        left: 2.5%;
-      }
-
-      .blog2cont {
-        flex-direction: column;
-      }
-
-      .blog2 {
-        width: 100%;
-      }
-
-      .blog2 .b2desc {
-        width: 40%;
-      }
-
-      .blog2 .b2desc:nth-child(2) {
-        left: 8%;
-      }
-    }
-  </style>
-</head>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-lg" aria-label="Thirteenth navbar example">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand col-lg-3 me-0" href="#" style="font-family: 'Nunito Sans', sans-serif;"><span
-          style="color: red;">M</span><span style="color: white;">ake</span><span style="color: red;">T</span><span
-          style="color: white;">rips</span></a>
-      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-        <ul class="navbar-nav col-lg-6 " style="justify-content: space-evenly;">
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#section1">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#section2">Book</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#section3">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#section4">Packages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#section5">Reviews</a>
-          </li>
-
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
-          <div class="d-lg-flex col-lg-3 justify-content-lg-end" style="right: 0; position: absolute;">
-            <form class="d-flex" role="search" action="/search" method="POST">
-              {%csrf_token%}
-              <input class="form-control " required name="search_box"
-                style="border-radius: 2rem;  border-top-right-radius: 0;border-bottom-right-radius: 0;" type="search"
-                placeholder="Search Places" aria-label="Search">
-              <button class="btn"
-                style="margin-right: 2px; background: white; border: transparent; border-radius: 2rem; border-bottom-left-radius: 0;border-top-left-radius: 0;"
-                type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-            {% if user.is_authenticated%}
-            <a class="btn btn-primary" style="border-radius: 2rem;" href="/Logout">LOGOUT</a>
-            {% else %}
-            <a class="btn btn-primary" style="border-radius: 2rem;" href="/Login">LOGIN</a>
-            {% endif %}
-          </div>
-        </ul>
+{% extends 'base.html' %}
+{% block title %}Home {% endblock title %}
+
+{% block body %}
+<!-- S1 -->
+<div id="section1" class="container-fluid ">
+  <div id="carouselExampleCaptions" class="carousel slide" style="height: 100%;">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+        aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+        aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/static/mauritiusp.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>MAURITIUS</h1>
+          <p>Mauritius is mostly appreciated by tourists for its natural environment and man-made attractions, the
+            multi-ethnic and cultural diversity of the population, the tropical climate, beaches and water sports.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/london.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>LONDON</h1>
+          <p>The most popular tourist places in London include the cultural heart of the city, Soho, the green suburbs
+            of Hampstead and the Royal Parks like Richmond Park. </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/dubai.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>DUBAI</h1>
+          <p>Ranking as one of the best Dubai tourist places, the Palm Islands are the world's largest man-made
+            islands. Artificially constructed in the shape of a palm tree, the name does the place great justice. </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/switzerland.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>SWITZERLAND</h1>
+          <p>Tourist attractions in Switzerland consist of some well groomed alpines of Davos and the blankets of
+            fluffy snow in the Jungfraujoch. Switzerland are not only famous for their beauty, but the culture, food,
+            adventure sports and historical monuments also make thousands of tourists flock here.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="/static/paris.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>PARIS</h1>
+          <p>Paris, the city of Lights, the fashion capital, the city of Love. All these nicknames are far from enough
+            to reveal all of Paris. Paris is one of the most beautiful cities in the world. It is known worldwide for
+            the Louvre Museum, Notre-Dame cathedral, and the Eiffel tower.</p>
+        </div>
       </div>
     </div>
-  </nav>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
 
-  <!-- S1 -->
-  <div id="section1" class="container-fluid ">
-    <div id="carouselExampleCaptions" class="carousel slide" style="height: 100%;">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-          aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-          aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
-          aria-label="Slide 5"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="/static/mauritiusp.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>MAURITIUS</h1>
-            <p>Mauritius is mostly appreciated by tourists for its natural environment and man-made attractions, the
-              multi-ethnic and cultural diversity of the population, the tropical climate, beaches and water sports.</p>
-          </div>
+<!-- S2 -->
+<div id="section2" class="container-fluid">
+  <p class="heading">BOOK NOW</p>
+  <div class="container">
+    <div class="forimg">
+      <img src="/static/booking.jpg" alt="">
+    </div>
+    <div class="forform">
+      <form action="/book" method="POST">
+        {%csrf_token%}
+        <div class="mb-3">
+          <label for="to" class="form-label">To</label>
+          <input type="Text" name="to_place" required class="form-control" id="to">
         </div>
-        <div class="carousel-item">
-          <img src="/static/london.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>LONDON</h1>
-            <p>The most popular tourist places in London include the cultural heart of the city, Soho, the green suburbs
-              of Hampstead and the Royal Parks like Richmond Park. </p>
-          </div>
+        <div class="mb-3">
+          <label for="departure" class="form-label">Departure</label>
+          <input type="date" required class="form-control" id="departure">
         </div>
-        <div class="carousel-item">
-          <img src="/static/dubai.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>DUBAI</h1>
-            <p>Ranking as one of the best Dubai tourist places, the Palm Islands are the world's largest man-made
-              islands. Artificially constructed in the shape of a palm tree, the name does the place great justice. </p>
-          </div>
+        <div class="mb-3">
+          <label for="return" class="form-label">Return</label>
+          <input type="date" required class="form-control" id="return">
         </div>
-        <div class="carousel-item">
-          <img src="/static/switzerland.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>SWITZERLAND</h1>
-            <p>Tourist attractions in Switzerland consist of some well groomed alpines of Davos and the blankets of
-              fluffy snow in the Jungfraujoch. Switzerland are not only famous for their beauty, but the culture, food,
-              adventure sports and historical monuments also make thousands of tourists flock here.</p>
-          </div>
+        <div class="mb-3">
+          <label for="nuofpersons" class="form-label">Number of Persons</label>
+          <input type="number" required class="form-control" id="nuofpersons">
         </div>
-        <div class="carousel-item">
-          <img src="/static/paris.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h1>PARIS</h1>
-            <p>Paris, the city of Lights, the fashion capital, the city of Love. All these nicknames are far from enough
-              to reveal all of Paris. Paris is one of the most beautiful cities in the world. It is known worldwide for
-              the Louvre Museum, Notre-Dame cathedral, and the Eiffel tower.</p>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+        <input type="submit" class="buttn" value="Book Now">
+      </form>
     </div>
   </div>
+</div>
 
-  <!-- S2 -->
-  <div id="section2" class="container-fluid">
-    <p class="heading">BOOK NOW</p>
-    <div class="container">
-      <div class="forimg">
-        <img src="/static/booking.jpg" alt="">
+<!-- S3 -->
+<div id="section3" class="container-fluid">
+  <p class="heading">GALLERY</p>
+  <div class="box-container">
+    <div class="box">
+      <img src="/static/victoriafalls.jpg" alt="">
+      <div class="cont">
+        <h3>VICTORIA FALLS</h3>
+        <p>Victoria Falls is a waterfall on the Zambezi River in southern Africa, which provides habitat for several
+          unique species.</p>
+        <a href="#" class="buttn">SEE MORE</a>
       </div>
-      <div class="forform">
-        <form action="/book" method="POST">
-          {%csrf_token%}
-          <div class="mb-3">
-            <label for="to" class="form-label">To</label>
-            <input type="Text" name="to_place" required class="form-control" id="to">
-          </div>
-          <div class="mb-3">
-            <label for="departure" class="form-label">Departure</label>
-            <input type="date" required class="form-control" id="departure">
-          </div>
-          <div class="mb-3">
-            <label for="return" class="form-label">Return</label>
-            <input type="date" required class="form-control" id="return">
-          </div>
-          <div class="mb-3">
-            <label for="nuofpersons" class="form-label">Number of Persons</label>
-            <input type="number" required class="form-control" id="nuofpersons">
-          </div>
-          <input type="submit" class="buttn" value="Book Now">
-        </form>
+    </div>
+    <div class="box">
+      <img src="/static/maldives.jpg" alt="">
+      <div class="cont">
+        <h3>MALDIVES</h3>
+        <p>The Maldives, officially the Republic of Maldives, is an archipelagic state and country in South Asia,
+          situated in the Indian Ocean.</p>
+        <a href="#" class="buttn">SEE MORE</a>
+      </div>
+    </div>
+    <div class="box">
+      <img src="/static/tajmahal.jpg" alt="">
+      <div class="cont">
+        <h3>TAJ MAHAL</h3>
+        <p>The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar
+          Pradesh, India.</p>
+        <a href="#" class="buttn">SEE MORE</a>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="/static/mountfuji.jpg" alt="">
+      <div class="cont">
+        <h3>MOUNT FUJI</h3>
+        <p>Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo.</p>
+        <a href="#" class="buttn">SEE MORE</a>
+      </div>
+    </div>
+    <div class="box">
+      <img src="/static/grandcanyon.jpg" alt="">
+      <div class="cont">
+        <h3>GRAND CANYON</h3>
+        <p>The Grand Canyon in Arizona is a natural formation distinguished by layered bands of red rock.</p>
+        <a href="#" class="buttn">SEE MORE</a>
+      </div>
+    </div>
+    <div class="box">
+      <img src="/static/cliffsosmoher.jpg" alt="">
+      <div class="cont">
+        <h3>CLIFFS OF MOHER</h3>
+        <p>The Cliffs of Moher are sea cliffs located at the southwestern edge of the Burren region in County Clare,
+          Ireland. </p>
+        <a href="#" class="buttn">SEE MORE</a>
       </div>
     </div>
   </div>
+  <a href="/gallery" class="buttn"
+    style="display: flex; width: 100%; color: black; justify-content: center; margin-bottom: 10px;">View More</a>
+</div>
 
-  <!-- S3 -->
-  <div id="section3" class="container-fluid">
-    <p class="heading">GALLERY</p>
-    <div class="box-container">
-      <div class="box">
-        <img src="/static/victoriafalls.jpg" alt="">
-        <div class="cont">
-          <h3>VICTORIA FALLS</h3>
-          <p>Victoria Falls is a waterfall on the Zambezi River in southern Africa, which provides habitat for several
-            unique species.</p>
-          <a href="#" class="buttn">SEE MORE</a>
+<!-- S4 -->
+<div id="section4" class="container-fluid">
+  <p class="heading">PACKAGES</p>
+  <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/indiap.jpg" alt="">
+        <h3>INDIA</h3>
+        <p>This package includes all tourist places in India,with accommodations.</p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
         </div>
-      </div>
-      <div class="box">
-        <img src="/static/maldives.jpg" alt="">
-        <div class="cont">
-          <h3>MALDIVES</h3>
-          <p>The Maldives, officially the Republic of Maldives, is an archipelagic state and country in South Asia,
-            situated in the Indian Ocean.</p>
-          <a href="#" class="buttn">SEE MORE</a>
-        </div>
-      </div>
-      <div class="box">
-        <img src="/static/tajmahal.jpg" alt="">
-        <div class="cont">
-          <h3>TAJ MAHAL</h3>
-          <p>The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar
-            Pradesh, India.</p>
-          <a href="#" class="buttn">SEE MORE</a>
-        </div>
-      </div>
-
-      <div class="box">
-        <img src="/static/mountfuji.jpg" alt="">
-        <div class="cont">
-          <h3>MOUNT FUJI</h3>
-          <p>Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo.</p>
-          <a href="#" class="buttn">SEE MORE</a>
-        </div>
-      </div>
-      <div class="box">
-        <img src="/static/grandcanyon.jpg" alt="">
-        <div class="cont">
-          <h3>GRAND CANYON</h3>
-          <p>The Grand Canyon in Arizona is a natural formation distinguished by layered bands of red rock.</p>
-          <a href="#" class="buttn">SEE MORE</a>
-        </div>
-      </div>
-      <div class="box">
-        <img src="/static/cliffsosmoher.jpg" alt="">
-        <div class="cont">
-          <h3>CLIFFS OF MOHER</h3>
-          <p>The Cliffs of Moher are sea cliffs located at the southwestern edge of the Burren region in County Clare,
-            Ireland. </p>
-          <a href="#" class="buttn">SEE MORE</a>
-        </div>
+        <b>₹ 3,49,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
       </div>
     </div>
-    <a href="/gallery" class="buttn"
-      style="display: flex; width: 100%; color: black; justify-content: center; margin-bottom: 10px;">View More</a>
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/parisp.jpg" alt="">
+        <h3>PARIS</h3>
+        <p>Experience the romance of Paris with our 5-day package.</p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <b>₹ 1,49,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
+      </div>
+    </div>
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/icelandsp.jpg" alt="">
+        <h3>ICELANDS</h3>
+        <p>Explore Iceland's stunning landscapes with our 7-day package.</p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <b>₹ 2,09,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
+      </div>
+    </div>
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/newzealandp.jpg" alt="">
+        <h3>NEW ZEALANDS</h3>
+        <p>Discover New Zealand's natural beauty with our 10-day package.</p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <b>₹ 1,89,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
+      </div>
+    </div>
+
   </div>
-
-  <!-- S4 -->
-  <div id="section4" class="container-fluid">
-    <p class="heading">PACKAGES</p>
-    <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/indiap.jpg" alt="">
-          <h3>INDIA</h3>
-          <p>This package includes all tourist places in India,with accommodations.</p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 3,49,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
+  <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/dubaip.jpg" alt="">
+        <h3>DUBAI</h3>
+        <p>Experience the luxury and modernity of Dubai with our 3-day package, including a desert safari.</p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
         </div>
+        <b>₹ 2,99,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
       </div>
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/parisp.jpg" alt="">
-          <h3>PARIS</h3>
-          <p>Experience the romance of Paris with our 5-day package.</p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 1,49,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
-        </div>
-      </div>
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/icelandsp.jpg" alt="">
-          <h3>ICELANDS</h3>
-          <p>Explore Iceland's stunning landscapes with our 7-day package.</p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 2,09,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
-        </div>
-      </div>
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/newzealandp.jpg" alt="">
-          <h3>NEW ZEALANDS</h3>
-          <p>Discover New Zealand's natural beauty with our 10-day package.</p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 1,89,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
-        </div>
-      </div>
-
     </div>
-    <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/dubaip.jpg" alt="">
-          <h3>DUBAI</h3>
-          <p>Experience the luxury and modernity of Dubai with our 3-day package, including a desert safari.</p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 2,99,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/switzerlandp.jpg" alt="">
+        <h3>SWITZERLAND</h3>
+        <p>Discover the beauty of Switzerland with our 7-day package, including a scenic train ride. Book this now
+        </p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
         </div>
+        <b>₹ 2,49,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
       </div>
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/switzerlandp.jpg" alt="">
-          <h3>SWITZERLAND</h3>
-          <p>Discover the beauty of Switzerland with our 7-day package, including a scenic train ride. Book this now
-          </p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 2,49,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
+    </div>
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/londonp.jpg" alt="">
+        <h3>LONDON</h3>
+        <p>Experience the best views of London with our 5-day package, including a tour of Buckingham Palace.</p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
         </div>
+        <b>₹ 1,89,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
       </div>
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/londonp.jpg" alt="">
-          <h3>LONDON</h3>
-          <p>Experience the best views of London with our 5-day package, including a tour of Buckingham Palace.</p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 1,89,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
+    </div>
+    <div class="pcard">
+      <div class="pcardin">
+        <img src="/static/newyorkcity.jpg" alt="">
+        <h3>NEW YORK CITY</h3>
+        <p>Experience the excitement of NYC with our 4-day package, including a visit to the Empire State Building.
+        </p>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
         </div>
+        <b>₹ 2,29,999.00/-</b>
+        <a href="" class="buttn">Book Now</a>
       </div>
-      <div class="pcard">
-        <div class="pcardin">
-          <img src="/static/newyorkcity.jpg" alt="">
-          <h3>NEW YORK CITY</h3>
-          <p>Experience the excitement of NYC with our 4-day package, including a visit to the Empire State Building.
-          </p>
-          <div>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <b>₹ 2,29,999.00/-</b>
-          <a href="" class="buttn">Book Now</a>
-        </div>
-      </div>
+    </div>
 
+  </div>
+</div>
+
+<!-- S5 -->
+<div id="section5" class="container-fluid">
+  <p class="heading">REVIEWS</p>
+  <div class="rcontainer">
+    <div class="rbox">
+      <div class="rimg">
+        <img src="/static/klaus.jpg" alt="">
+      </div>
+      <div class="rcontent">
+        <h3>Klaus</h3>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <p>The trip was amazing! The scenery was breathtaking and the tour guide was very knowledgeable and friendly.
+        </p>
+      </div>
+    </div>
+    <div class="rbox">
+      <div class="rimg">
+        <img src="/static/caroline.jpg" alt="">
+      </div>
+      <div class="rcontent">
+        <h3>Caroline</h3>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <p>The food on the cruise was delicious and the entertainment was top-notch. I would highly recommend this
+          experience!</p>
+      </div>
+    </div>
+    <div class="rbox">
+      <div class="rimg">
+        <img src="/static/stefan.jpg" alt="">
+      </div>
+      <div class="rcontent">
+        <h3>Stefan</h3>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <p>The hotel was disappointing. The room was small and outdated, and the staff was unhelpful.</p>
+      </div>
     </div>
   </div>
-
-  <!-- S5 -->
-  <div id="section5" class="container-fluid">
-    <p class="heading">REVIEWS</p>
-    <div class="rcontainer">
-      <div class="rbox">
-        <div class="rimg">
-          <img src="/static/klaus.jpg" alt="">
-        </div>
-        <div class="rcontent">
-          <h3>Klaus</h3>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <p>The trip was amazing! The scenery was breathtaking and the tour guide was very knowledgeable and friendly.
-          </p>
-        </div>
+  <div class="rcontainer">
+    <div class="rbox">
+      <div class="rimg">
+        <img src="/static/rebekah.jpg" alt="">
       </div>
-      <div class="rbox">
-        <div class="rimg">
-          <img src="/static/caroline.jpg" alt="">
-        </div>
-        <div class="rcontent">
-          <h3>Caroline</h3>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <p>The food on the cruise was delicious and the entertainment was top-notch. I would highly recommend this
-            experience!</p>
-        </div>
-      </div>
-      <div class="rbox">
-        <div class="rimg">
-          <img src="/static/stefan.jpg" alt="">
-        </div>
-        <div class="rcontent">
-          <h3>Stefan</h3>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <p>The hotel was disappointing. The room was small and outdated, and the staff was unhelpful.</p>
-        </div>
+      <div class="rcontent">
+        <h3>Rebakah</h3>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <p>The city tour was informative and fun, but the guide was hard to understand at times due to their thick
+          accent.</p>
       </div>
     </div>
-    <div class="rcontainer">
-      <div class="rbox">
-        <div class="rimg">
-          <img src="/static/rebekah.jpg" alt="">
-        </div>
-        <div class="rcontent">
-          <h3>Rebakah</h3>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <p>The city tour was informative and fun, but the guide was hard to understand at times due to their thick
-            accent.</p>
-        </div>
+    <div class="rbox">
+      <div class="rimg">
+        <img src="/static/damon.jpg" alt="">
       </div>
-      <div class="rbox">
-        <div class="rimg">
-          <img src="/static/damon.jpg" alt="">
-        </div>
-        <div class="rcontent">
-          <h3>Damon</h3>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <p>The transportation was unreliable and caused us to miss out on some of the planned activities. It was a
-            frustrating experience.</p>
-        </div>
+      <div class="rcontent">
+        <h3>Damon</h3>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <p>The transportation was unreliable and caused us to miss out on some of the planned activities. It was a
+          frustrating experience.</p>
       </div>
-
-      <div class="rbox">
-        <div class="rimg">
-          <img src="/static/hayley.jpg" alt="">
-        </div>
-        <div class="rcontent">
-          <h3>Hayley</h3>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <p>The safari was unforgettable! We saw so many amazing animals and the guide was excellent at spotting them.
-            I would do it again in a heartbeat.</p>
-        </div>
-      </div>
-
     </div>
-    <!-- display review  -->
-    <div class="addreview mb-10">
-      <h2>Reviews:</h2>
-      {% for x in querys %}
+
+    <div class="rbox">
+      <div class="rimg">
+        <img src="/static/hayley.jpg" alt="">
+      </div>
+      <div class="rcontent">
+        <h3>Hayley</h3>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <p>The safari was unforgettable! We saw so many amazing animals and the guide was excellent at spotting them.
+          I would do it again in a heartbeat.</p>
+      </div>
+    </div>
+
+  </div>
+  <!-- display review  -->
+  <div class="mb-10">
+    <h2>Reviews:</h2>
+    <!-- {% for x in querys %}
         {{x.username}}<br>
         {{x.review_place}}<br>
         {{x.rating_no}}<br>
        {{ x.review_desc }} <br>
 
+      {% endfor %} -->
+    <div class="rcon mb-20">
+      {% for x in querys %}
+      <div class="item">
+        <div class="rhead">
+          <img src="user.png" alt="">
+          <h2>{{x.username}}</h2>
+        </div>
+        <div class="rbody">
+          <h4>{{x.review_place}}</h4>
+          <!-- stars -->
+          {{x.rating_no}}
+          <p>{{ x.review_desc }}</p>
+        </div>
+      </div>
       {% endfor %}
-      
     </div>
 
-    <!-- Add review -->
-    <div class="addreview">
-      {% if user.is_authenticated %}
-      <form name="rform" onsubmit="return validateForm()" action="/addreview" method="POST">
-        {%csrf_token%}
-        <div class="mb-3">
-          <label for="place_vis" class="form-label">Place Visited</label>
-          <input type="Text" name="place_visited" required class="form-control" id="place_vis">
-        </div>
-        <div class="mb-3">
-          <label for="Rate" class="form-label">Rate out of 5</label>
-          <input type="number" name="rating" required class="form-control" id="Rate">
-        </div>
-        <div class="form-floating mb-3">
-          <textarea class="form-control" required placeholder="Leave a review here" name="review"
-            id="floatingTextarea"></textarea>
-          <label for="floatingTextarea">Add your review</label>
-        </div>
+  </div>
 
-        <input type="submit" class="btn btn-primary" value="Add Review">
-      </form>
-      {% else %}
-      <h3>You are not logged in please login to submit review</h3>
-      <a href="/Login" class="btn btn-primary">Click here to Login</a>
-      {% endif %}
+  <!-- Add review -->
+  <div class="addreview">
+    {% if user.is_authenticated %}
+    <form name="rform" onsubmit="return validateForm()" action="/addreview" method="POST">
+      {%csrf_token%}
+      <div class="mb-3">
+        <label for="place_vis" class="form-label">Place Visited</label>
+        <input type="Text" name="place_visited" required class="form-control" id="place_vis">
+      </div>
+      <div class="mb-3">
+        <label for="Rate" class="form-label">Rate out of 5</label>
+        <input type="number" name="rating" required class="form-control" id="Rate">
+      </div>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" required placeholder="Leave a review here" name="review"
+          id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Add your review</label>
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Add Review">
+    </form>
+    {% else %}
+    <h3>You are not logged in please login to submit review</h3>
+    <a href="/Login" class="btn btn-primary">Click here to Login</a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Blog -->
+<section>
+  <p class="heading">BLOG</p>
+  <div class="blog1">
+    <div class="desc">
+      <h3>I Left My Career To Become A World Traveller </h3>
+      <p>Traveling is an enriching experience that broadens horizons, exposes new cultures, and creates unforgettable
+        memories.</p>
+      <p style="text-align: end;">-MadMax </p>
+    </div>
+  </div>
+  <div class="blog2cont">
+    <div class="blog2">
+      <img src="/static/mounteverest.jpg" alt="">
+      <div class="b2desc">
+        <h3><b>Mount Everest</b></h3>
+        <p>Climbing Mount Everest is a life-changing experience that requires months of preparation, physical
+          endurance, and mental fortitude. It's a dangerous and challenging journey that tests the limits of human
+          strength and resilience.
+        </p>
+      </div>
+    </div>
+    <div class="blog2">
+      <img src="/static/leaningtower.jpg" alt="">
+      <div class="b2desc">
+        <h3><b>Leaning Tower of Pisa</b></h3>
+        <p>Visiting the Leaning Tower of Pisa is a unique experience that offers stunning views and a chance to see a
+          world-famous architectural icon.
+        </p>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="blog3">
+    <div class="card">
+      <div class="card__header">
+        <img src="/static/colosseum.jpg" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <h4>Colosseum</h4>
+        <p>The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the
+          Roman Forum. It is the largest ancient amphitheatre ever built, and is still the largest standing
+          amphitheatre in the world, despite its age.</p>
+      </div>
+      <div class="card__footer">
+        <div class="user">
+          <div class="user__info">
+            <h5>Elena</h5>
+            <small>2h ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="/static/salt.jpg" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <h4>Uyuni Salt Flat</h4>
+        <p>Salar de Uyuni, amid the Andes in southwest Bolivia, is the world’s largest salt flat. It’s the legacy of a
+          prehistoric lake that went dry, leaving behind a desertlike, nearly 11,000-sq.-km. landscape of bright-white
+          salt, rock formations and cacti-studded islands. Its otherworldly expanse can be observed from central
+          Incahuasi Island. </p>
+      </div>
+      <div class="card__footer">
+        <div class="user">
+          <div class="user__info">
+            <h5>Bonnie</h5>
+            <small>3 days ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="/static/plivice.jpg" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <h4>Plitvice Lakes National Park</h4>
+        <p>Plitviče Lakes National Park is a 295-sq.-km forest reserve in central Croatia. It's known for a chain of
+          16 terraced lakes, joined by waterfalls, that extend into a limestone canyon. Walkways and hiking trails
+          wind around and across the water, and an electric boat links the 12 upper and 4 lower lakes. </p>
+      </div>
+      <div class="card__footer">
+        <div class="user">
+          <div class="user__info">
+            <h5>Elijah</h5>
+            <small>1 week ago</small>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Blog -->
-  <section>
-    <p class="heading">BLOG</p>
-    <div class="blog1">
-      <div class="desc">
-        <h3>I Left My Career To Become A World Traveller </h3>
-        <p>Traveling is an enriching experience that broadens horizons, exposes new cultures, and creates unforgettable
-          memories.</p>
-        <p style="text-align: end;">-MadMax </p>
-      </div>
+</section>
+
+<!-- footer  -->
+<footer>
+  <div class="aboutb">
+    <div class="fdesc">
+      <h3>About</h3>
+      <p>
+        Planning a travel can be exciting and challenging. It involves researching destinations, creating an
+        itinerary, and managing logistics. A successful travel requires careful planning, attention to detail,
+        and strong organizational skills. It is important to consider factors such as budget, transportation,
+        accommodations, and activities. You should also research the local culture, customs, and laws to ensure a
+        smooth and enjoyable trip. To make the most of your travel, consider hiring a travel agent or joining
+        a group tour. They can provide valuable insights and help you navigate unfamiliar territory. With the right
+        planning and preparation, a travel can be a rewarding and unforgettable experience.
+      </p>
     </div>
-    <div class="blog2cont">
-      <div class="blog2">
-        <img src="/static/mounteverest.jpg" alt="">
-        <div class="b2desc">
-          <h3><b>Mount Everest</b></h3>
-          <p>Climbing Mount Everest is a life-changing experience that requires months of preparation, physical
-            endurance, and mental fortitude. It's a dangerous and challenging journey that tests the limits of human
-            strength and resilience.
-          </p>
-        </div>
-      </div>
-      <div class="blog2">
-        <img src="/static/leaningtower.jpg" alt="">
-        <div class="b2desc">
-          <h3><b>Leaning Tower of Pisa</b></h3>
-          <p>Visiting the Leaning Tower of Pisa is a unique experience that offers stunning views and a chance to see a
-            world-famous architectural icon.
-          </p>
-        </div>
-      </div>
-
-
+    <div class="fnav">
+      <a href="#section1">Home</a>
+      <a href="#section2">Book</a>
+      <a href="#section3">Gallery</a>
+      <a href="#section4">Packages</a>
+      <a href="#section5">Reviews</a>
     </div>
-    <div class="blog3">
-      <div class="card">
-        <div class="card__header">
-          <img src="/static/colosseum.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <h4>Colosseum</h4>
-          <p>The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the
-            Roman Forum. It is the largest ancient amphitheatre ever built, and is still the largest standing
-            amphitheatre in the world, despite its age.</p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <div class="user__info">
-              <h5>Elena</h5>
-              <small>2h ago</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card__header">
-          <img src="/static/salt.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <h4>Uyuni Salt Flat</h4>
-          <p>Salar de Uyuni, amid the Andes in southwest Bolivia, is the world’s largest salt flat. It’s the legacy of a
-            prehistoric lake that went dry, leaving behind a desertlike, nearly 11,000-sq.-km. landscape of bright-white
-            salt, rock formations and cacti-studded islands. Its otherworldly expanse can be observed from central
-            Incahuasi Island. </p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <div class="user__info">
-              <h5>Bonnie</h5>
-              <small>3 days ago</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card__header">
-          <img src="/static/plivice.jpg" alt="card__image" class="card__image" width="600">
-        </div>
-        <div class="card__body">
-          <h4>Plitvice Lakes National Park</h4>
-          <p>Plitviče Lakes National Park is a 295-sq.-km forest reserve in central Croatia. It's known for a chain of
-            16 terraced lakes, joined by waterfalls, that extend into a limestone canyon. Walkways and hiking trails
-            wind around and across the water, and an electric boat links the 12 upper and 4 lower lakes. </p>
-        </div>
-        <div class="card__footer">
-          <div class="user">
-            <div class="user__info">
-              <h5>Elijah</h5>
-              <small>1 week ago</small>
-            </div>
-          </div>
-        </div>
-      </div>
+  </div>
+  <hr>
+  <div class="bottomfooter">
+    <span style="color: white;">Copyright &copy; MakeTrips</span>
+    <div>
+      <i class="fa-brands fa-facebook fa-2xl" style="color: blue;"></i>
+      <i class="fa-brands fa-twitter fa-2xl" style="color: blue;"></i>
+      <i class="fa-brands fa-linkedin fa-2xl" style="color: blue;"></i>
+      <i class="fa-brands fa-youtube fa-2xl" style="color: red;"></i>
     </div>
+  </div>
+</footer>
 
-  </section>
-
-  <!-- footer  -->
-  <footer>
-    <div class="aboutb">
-      <div class="fdesc">
-        <h3>About</h3>
-        <p>
-          Planning a travel can be exciting and challenging. It involves researching destinations, creating an
-          itinerary, and managing logistics. A successful travel requires careful planning, attention to detail,
-          and strong organizational skills. It is important to consider factors such as budget, transportation,
-          accommodations, and activities. You should also research the local culture, customs, and laws to ensure a
-          smooth and enjoyable trip. To make the most of your travel, consider hiring a travel agent or joining
-          a group tour. They can provide valuable insights and help you navigate unfamiliar territory. With the right
-          planning and preparation, a travel can be a rewarding and unforgettable experience.
-        </p>
-      </div>
-      <div class="fnav">
-        <a href="#section1">Home</a>
-        <a href="#section2">Book</a>
-        <a href="#section3">Gallery</a>
-        <a href="#section4">Packages</a>
-        <a href="#section5">Reviews</a>
-      </div>
-    </div>
-    <hr>
-    <div class="bottomfooter">
-      <span style="color: white;">Copyright &copy; MakeTrips</span>
-      <div>
-        <i class="fa-brands fa-facebook fa-2xl" style="color: blue;"></i>
-        <i class="fa-brands fa-twitter fa-2xl" style="color: blue;"></i>
-        <i class="fa-brands fa-linkedin fa-2xl" style="color: blue;"></i>
-        <i class="fa-brands fa-youtube fa-2xl" style="color: red;"></i>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock body %}

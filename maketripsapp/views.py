@@ -56,7 +56,8 @@ def register(request):
     return redirect('/')
 
 def home(request):
-    return render(request,'home.html')
+    return render(request,'home.html', {'querys':Myreviews.objects.all()})
+
 def gallery(request):
     return render(request,'gallery.html')
 def search(request):
@@ -80,5 +81,5 @@ def addreview(request):
             
         )
         myrevw.save()
-    return redirect("/home", {'querys':Myreviews.objects.all()})
+    return render(request,'home.html', {'querys':Myreviews.objects.all()})
     
