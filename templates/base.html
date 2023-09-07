@@ -1,609 +1,686 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> {% block title%} {% endblock title%} | MakeTrips</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> {% block title%} {% endblock title%} | MakeTrips</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz@1,6..12&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/b07db3e689.js" crossorigin="anonymous"></script>
-    
-    <script>
-        function validateForm() {
-          var rating = document.forms["rform"]["rating"].value;
-          if (rating > 5) {
-            alert("Please rate between 0-5");
-            return false;
-          }
-        }
-      </script>
-    
-      <style>
-        #section1 {
-          padding-top: 50px;
-        }
-    
-        #section2 {
-          padding-top: 50px;
-          margin-bottom: 30px;
-        }
-    
-        #section3 {
-          padding-top: 30px;
-        }
-    
-        #section4 {
-          padding-top: 30px;
-        }
-    
-        #section5 {
-          padding-top: 30px;
-    
-        }
-    
-        .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          background: #333;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          z-index: 100;
-    
-        }
-    
-        .nav-link {
-          color: white;
-        }
-    
-        .nav-link:hover {
-          color: red;
-          font-size: var(--bs-nav-link-font-size);
-          font-weight: var(--bs-nav-link-font-weight);
-        }
-    
-        .carousel-caption h1 {
-          font-family: serif;
-          font-size: 100px;
-        }
-    
-        .carousel-item img {
-          height: 41em;
-        }
-    
-        .carousel-item p {
-          color: white;
-          font-family: Arial, Helvetica, sans-serif;
-        }
-    
-        .carousel-item:nth-child(1) p {
-          color: black;
-          font-family: Arial, Helvetica, sans-serif;
-        }
-    
-    
-        .container {
-          margin-top: 10px;
-          display: flex;
-          justify-content: space-evenly;
-        }
-    
-        .container .forimg,
-        .forform {
-          width: 45%;
-        }
-    
-        .forimg img {
-          width: 100%;
-        }
-    
-        .buttn {
-          width: 100%;
-          margin-top: 10px;
-          text-decoration: none;
-          border: 6px solid transparent;
-          border-image: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-          border-image-slice: 1;
-        }
-    
-        .buttn:hover {
-          transition: .5s;
-          background: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-          color: white;
-          transform: scale(1.0);
-          box-shadow: 0 0 24px 0 blue;
-    
-        }
-    
-        .heading {
-          background: url(/static/background.jpg) center center/cover no-repeat;
-          color: #de466c;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font: normal 800 100px Fira Code, Sans-serif;
-          display: flex;
-          justify-content: center;
-        }
-    
-    
-        .box-container {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.5rem;
-          margin-bottom: 10px;
-        }
-    
-        .box-container .box {
-          overflow: hidden;
-          box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
-          height: 20rem;
-          flex: 1 1 30%;
-          position: relative;
-          padding: 5px;
-          border-radius: 15px;
-        }
-    
-        .box-container .box img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-          border-radius: 15px;
-        }
-    
-        .box-container .box .cont {
-          position: absolute;
-          top: -100%;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          text-align: center;
-          background-color: rgba(0, 0, 0, .7);
-          padding: 2rem;
-          padding-top: 2rem;
-          border-radius: 15px;
-        }
-    
-        .box-container .box .cont h3 {
-          font-size: 2.5rem;
-          color: #00fff8;
-        }
-    
-        .box-container .box .cont p {
-          font-size: 1.5rem;
-          color: white;
-          padding: .5rem 0;
-        }
-    
-        .box-container .box:hover .cont {
-          transition: .5s;
-          top: 0;
-        }
-    
-        .pcard {
-          margin-top: 25px;
-          padding: 0 6px;
-          float: left;
-          width: 22%;
-          border-radius: 20px;
-          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-          margin-bottom: 20px;
-        }
-    
-        .pcardin {
-          margin-bottom: 20px;
-          background: white;
-          border: 3px solid transparent;
-          border-radius: 15px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-    
-        .pcardin img {
-          margin-top: 10px;
-          width: 80%;
-          height: 200px;
-          border-radius: 15px;
-        }
-    
-        .pcardin a {
-          text-align: center;
-        }
-    
-        .pcard:hover,
-        .rbox:hover,
-        .blog1:hover,
-        .blog3 .card:hover {
-          box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
-        }
 
-        .rcon {
-            display: grid;
-            /* grid-template-columns: 300px 100px 100px; */
-            /* grid-template-columns: 300px auto 100px; */
-            /* grid-template-columns: 1fr 4fr 1fr; */
-            grid-template-columns: auto auto auto;
-            grid-gap: 2rem;
-        }
+  <script>
+    function validateForm() {
+      var rating = document.forms["rform"]["rating"].value;
+      if (rating > 5) {
+        alert("Please rate between 0-5");
+        return false;
+      }
+    }
+  </script>
 
-        .item {
-            /* height: 100px;
-        width: 100px; */
-        padding: 10px;
-        border: 2px solid transparent;
-          border-radius: 15px;
-          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-        }
-        .rhead{
-            display: flex;
-            flex-direction: row;
-        }
-        .rhead img{
-            height: 70px;
-            width: 70px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
+  <style>
+    #section1 {
+      padding-top: -50px;
+    }
 
-        /* old reviews */
-    
-        .rcontainer {
-          display: flex;
-          justify-content: space-evenly;
-          margin-bottom: 50px;
-        }
-    
-        .rbox {
-          width: 23%;
-          display: flex;
-          flex-direction: column;
-          /* align-items: center; */
-          border: 2px solid transparent;
-          border-radius: 15px;
-          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-          margin-bottom: 15px;
-        }
-    
-        .rbox .rimg {
-          margin-top: 10px;
-        }
-    
-        .rbox .rimg img {
-    
-          width: 54%;
-          display: inherit;
-          margin: auto;
-          height: 200px;
-          border: 3px solid white;
-          border-radius: 50%;
-        }
-    
-        .rcontent {
-          padding-left: 15px;
-        }
-    
-        .addreview {
-          width: 70%;
-          margin: auto;
-          border-radius: 15px;
-          box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-          padding: 10px;
-        }
-    
-        footer {
-          margin-top: 20px;
-          background: black;
-          padding-top: 15px;
-        }
-    
-        .aboutb {
-          color: white;
-          display: flex;
-          justify-content: space-evenly;
-        }
-    
-        .fdesc {
-          width: 60%;
-        }
-    
-        .fnav {
-          border-left: 2px solid white;
-          padding: 15px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-evenly;
-        }
-    
-        .fnav a {
-          text-decoration: none;
-          color: white;
-          font-size: medium;
-        }
-    
-        .fnav a:hover {
-          color: blue;
-        }
-    
-        .bottomfooter {
-          display: flex;
-          justify-content: space-evenly;
-          padding-bottom: 15px;
-        }
-    
-        .bottomfooter div i {
-          margin-right: 10px;
-        }
-    
-        .bottomfooter div i:hover {
-          filter: drop-shadow(0px 0px 5px blue);
-          transform: scale(1.25);
-    
-        }
-    
-        .bottomfooter div i:nth-child(4):hover {
-          filter: drop-shadow(0px 0px 5px red);
-          transform: scale(1.25);
-        }
-    
-        .blog1 {
-          background: url(/static/blog1.jpg);
-          background-size: cover;
-          background-repeat: no-repeat;
-          padding: 15px;
-          width: 60%;
-          margin: auto;
-          height: 500px;
-          margin-bottom: 50px;
-        }
-    
-        .blog1 .desc {
-          background: white;
-          position: absolute;
-          width: 30%;
-          margin-bottom: 0;
-          left: 20%;
-    
-        }
-    
-        .blog2cont {
-          display: flex;
-          justify-content: space-evenly;
-        }
-    
-        .blog2 {
-          width: 40%;
-          margin-top: 20px;
-          height: 300px;
-          margin-bottom: 50px;
-    
-        }
-    
-        .blog2 img {
-          height: 100%;
-          width: 100%;
-          position: relative;
-        }
-    
-        .blog2 .b2desc {
-          color: white;
-          position: absolute;
-          display: inline-block;
-          width: 15%;
-          left: 8%;
-          padding: 15px 0px;
-        }
-    
-        .blog2:nth-child(2) .b2desc {
-          left: 54%;
-        }
-    
-        .blog2 img:hover {
-          transform: scale(1.05);
-          transition: .3s;
-        }
-    
-        .blog3 {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-evenly;
-          margin-block: 2rem;
-          gap: 2rem;
-          margin-bottom: 50px;
-        }
-    
-        .blog3 img {
-          max-width: 100%;
-          display: block;
-          object-fit: cover;
-        }
-    
-        .blog3 .card {
-          display: flex;
-          flex-direction: column;
-          width: clamp(20rem, calc(20rem + 2vw), 22rem);
-          overflow: hidden;
-          box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
-          border-radius: 1em;
-          background: #ECE9E6;
-          background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-    
-        }
-    
-        .card__body {
-          padding: 1rem;
-          display: flex;
-          flex-direction: column;
-          gap: .5rem;
-        }
-    
-        .card__body h4 {
-          font-size: 1.5rem;
-          text-transform: capitalize;
-        }
-    
-        .card__footer {
-          display: flex;
-          padding: 1rem;
-          margin-top: auto;
-        }
-    
-        .user {
-          display: flex;
-          gap: .5rem;
-        }
-    
-        .user__image {
-          border-radius: 50%;
-        }
-    
-        .user__info>small {
-          color: #666;
-        }
-    
-        @media only screen and (max-width: 700px) {
-          .pcard {
-            width: 49.99999%;
-            margin: 6px 0;
-          }
-    
-          .rbox {
-            width: 40%;
-          }
-          .rcon {
-                grid-template-columns: auto auto;
-            }
-        }
-    
-        @media only screen and (max-width: 500px) {
-          .container {
-            flex-direction: column;
-          }
-    
-          .heading {
-            font-size: 64px;
-          }
-    
-          .container .forimg,
-          .forform {
-            width: 100%;
-          }
-    
-          .box-container {
-            flex-direction: column;
-          }
-    
-          .box-container .box .cont p {
-            display: none;
-          }
-    
-          .pcard,
-          .rbox {
-            width: 100%;
-          }
-    
-          .rcontainer {
-            flex-direction: column;
-          }
-          .rcon {
-                grid-template-columns: auto;
-            }
-    
-          .blog1 {
-            width: 95%;
-          }
-    
-          .blog1 .desc {
-            left: 2.5%;
-          }
-    
-          .blog2cont {
-            flex-direction: column;
-          }
-    
-          .blog2 {
-            width: 100%;
-          }
-    
-          .blog2 .b2desc {
-            width: 40%;
-          }
-    
-          .blog2 .b2desc:nth-child(2) {
-            left: 8%;
-          }
-        }
-      </style>
+    #section2 {
+      padding-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    #section3 {
+      padding-top: 30px;
+    }
+
+    #section4 {
+      padding-top: 30px;
+    }
+
+    #section5 {
+      padding-top: 30px;
+
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      position: sticky;
+      background: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+
+    }
+
+    .nav-link {
+      font-size: large;
+      color: black;
+    }
+
+    .nav-link:hover {
+      color: orangered;
+      font-size: var(--bs-nav-link-font-size);
+      font-weight: var(--bs-nav-link-font-weight);
+    }
+
+    .carousel-caption h1 {
+      font-family: serif;
+      font-size: 100px;
+    }
+
+    .carousel-item img {
+      height: 41em;
+    }
+
+    .carousel-item p {
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .carousel-item:nth-child(1) p {
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    .container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .container .forimg,
+    .forform {
+      width: 45%;
+    }
+
+    .forimg img {
+      width: 100%;
+    }
+
+    .buttn {
+      width: 100%;
+      margin-top: 10px;
+      text-decoration: none;
+      border: 6px solid transparent;
+      border-image: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+      border-image-slice: 1;
+    }
+
+    .buttn:hover {
+      transition: .5s;
+      background: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+      color: white;
+      transform: scale(1.0);
+      box-shadow: 0 0 24px 0 blue;
+
+    }
+
+    .heading {
+      background: url(/static/background.jpg) center center/cover no-repeat;
+      color: #de466c;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font: normal 800 100px Fira Code, Sans-serif;
+      display: flex;
+      justify-content: center;
+    }
+
+
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .box-container .box {
+      overflow: hidden;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+      height: 20rem;
+      flex: 1 1 30%;
+      position: relative;
+      padding: 5px;
+      border-radius: 15px;
+    }
+
+    .box-container .box img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .box-container .box .cont {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .7);
+      padding: 2rem;
+      padding-top: 2rem;
+      border-radius: 15px;
+    }
+
+    .box-container .box .cont h3 {
+      font-size: 2.5rem;
+      color: #00fff8;
+    }
+
+    .box-container .box .cont p {
+      font-size: 1.5rem;
+      color: white;
+      padding: .5rem 0;
+    }
+
+    .box-container .box:hover .cont {
+      transition: .5s;
+      top: 0;
+    }
+
+    .fourcont {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 2rem;
+      justify-content: space-evenly;
+    }
+    .fourcont img{
+      width: 100%;
+      height: 200px;
+    }
+
+    /* .boxitem{
+
+    } */
+
+    /* packages css */
+    .pcard {
+      margin-top: 25px;
+      padding: 0 6px;
+      float: left;
+      width: 22%;
+      border-radius: 20px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .pcardin {
+      margin-bottom: 20px;
+      background: white;
+      border: 3px solid transparent;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pcardin img {
+      margin-top: 10px;
+      width: 80%;
+      height: 200px;
+      border-radius: 15px;
+    }
+
+    .pcardin a {
+      text-align: center;
+    }
+
+    .pcard:hover,
+    .rbox:hover,
+    .item:hover,
+    .blog1:hover,
+    .blog3 .card:hover {
+      box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    .rcon {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 2rem;
+      justify-content: space-evenly;
+    }
+
+    .item {
+      width: 350px;
+      padding: 10px;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    }
+
+    .rhead {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .rhead img {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .rhead h2 {
+      display: flex;
+      align-items: center;
+    }
+
+    /* old reviews */
+
+    .rcontainer {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 50px;
+    }
+
+    .rbox {
+      width: 23%;
+      display: flex;
+      flex-direction: column;
+      /* align-items: center; */
+      border: 2px solid transparent;
+      border-radius: 15px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      margin-bottom: 15px;
+    }
+
+    .rbox .rimg {
+      margin-top: 10px;
+    }
+
+    .rbox .rimg img {
+
+      width: 54%;
+      display: inherit;
+      margin: auto;
+      height: 200px;
+      border: 3px solid white;
+      border-radius: 50%;
+    }
+
+    .rcontent {
+      padding-left: 15px;
+    }
+
+    .addreview {
+      width: 70%;
+      margin: auto;
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+    }
+
+    footer {
+      margin-top: 20px;
+      background: black;
+      padding-top: 15px;
+    }
+
+    .aboutb {
+      color: white;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .fdesc {
+      width: 60%;
+    }
+
+    .fnav {
+      border-left: 2px solid white;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .fnav a {
+      text-decoration: none;
+      color: white;
+      font-size: medium;
+    }
+
+    .fnav a:hover {
+      color: blue;
+    }
+
+    .bottomfooter {
+      display: flex;
+      justify-content: space-evenly;
+      padding-bottom: 15px;
+    }
+
+    .bottomfooter div i {
+      margin-right: 10px;
+    }
+
+    .bottomfooter div i:hover {
+      filter: drop-shadow(0px 0px 5px blue);
+      transform: scale(1.25);
+
+    }
+
+    .bottomfooter div i:nth-child(4):hover {
+      filter: drop-shadow(0px 0px 5px red);
+      transform: scale(1.25);
+    }
+
+    .blog1 {
+      background: url(/static/blog1.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 15px;
+      width: 60%;
+      margin: auto;
+      height: 500px;
+      margin-bottom: 50px;
+    }
+
+    .blog1 .desc {
+      background: white;
+      position: absolute;
+      width: 30%;
+      margin-bottom: 0;
+      left: 20%;
+
+    }
+
+    .blog2cont {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .blog2 {
+      width: 40%;
+      margin-top: 20px;
+      height: 300px;
+      margin-bottom: 50px;
+
+    }
+
+    .blog2 img {
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .blog2 .b2desc {
+      color: white;
+      position: absolute;
+      display: inline-block;
+      width: 15%;
+      left: 8%;
+      padding: 15px 0px;
+    }
+
+    .blog2:nth-child(2) .b2desc {
+      left: 54%;
+    }
+
+    .blog2 img:hover {
+      transform: scale(1.05);
+      transition: .3s;
+    }
+
+    .blog3 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      margin-block: 2rem;
+      gap: 2rem;
+      margin-bottom: 50px;
+    }
+
+    .blog3 img {
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .blog3 .card {
+      display: flex;
+      flex-direction: column;
+      width: clamp(20rem, calc(20rem + 2vw), 22rem);
+      overflow: hidden;
+      box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+      border-radius: 1em;
+      background: #ECE9E6;
+      background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+    }
+
+    .card__body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .card__body h4 {
+      font-size: 1.5rem;
+      text-transform: capitalize;
+    }
+
+    .card__footer {
+      display: flex;
+      padding: 1rem;
+      margin-top: auto;
+    }
+
+    .user {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .user__image {
+      border-radius: 50%;
+    }
+
+    .user__info>small {
+      color: #666;
+    }
+
+    ::after {
+      color: black;
+    }
+
+    @media screen and (min-width:767px) and (max-width: 1023px) {
+      .pcard {
+        width: 49.99999%;
+        margin: 6px 0;
+      }
+
+      .rbox {
+        width: 40%;
+      }
+
+      .rcon {
+        grid-template-columns: auto auto;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .heading {
+        font-size: 64px;
+      }
+
+      .container .forimg,
+      .forform {
+        width: 100%;
+      }
+
+      .box-container {
+        flex-direction: column;
+      }
+
+      .box-container .box .cont p {
+        display: none;
+      }
+
+      .pcard,
+      .rbox {
+        width: 100%;
+      }
+
+      .rcontainer {
+        flex-direction: column;
+      }
+
+      .rcon {
+        grid-template-columns: auto;
+      }
+
+      .blog1 {
+        width: 95%;
+      }
+
+      .blog1 .desc {
+        left: 2.5%;
+      }
+
+      .blog2cont {
+        flex-direction: column;
+      }
+
+      .blog2 {
+        width: 100%;
+      }
+
+      .blog2 .b2desc {
+        width: 40%;
+      }
+
+      .blog2 .b2desc:nth-child(2) {
+        left: 8%;
+      }
+    }
+
+    @media screen and (min-width:1024px) {
+      .navbar {
+        height: 57px;
+      }
+    }
+  </style>
 
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg" aria-label="Thirteenth navbar example">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
-          aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand col-lg-3 me-0" href="#" style="font-family: 'Nunito Sans', sans-serif;"><span
-            style="color: red;">M</span><span style="color: white;">ake</span><span style="color: red;">T</span><span
-            style="color: white;">rips</span></a>
-        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-          <ul class="navbar-nav col-lg-6 " style="justify-content: space-evenly;">
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="#section1">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="#section2">Book</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="#section3">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="#section4">Packages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="#section5">Reviews</a>
-            </li>
-            <div class="d-lg-flex col-lg-3 justify-content-lg-end" style="right: 40px; position: absolute;">
-              <form class="d-flex" style="margin-right: 20px;" role="search" action="/search" method="POST">
-                {%csrf_token%}
-                <input class="form-control " required name="search_box"
-                  style="border-radius: 2rem;  border-top-right-radius: 0;border-bottom-right-radius: 0;" type="search"
-                  placeholder="Search Places" aria-label="Search">
-                <button class="btn"
-                  style="margin-right: 2px; background: white; border: transparent; border-radius: 2rem; border-bottom-left-radius: 0;border-top-left-radius: 0;"
-                  type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-              </form>
-              {% if user.is_authenticated%}
-              <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="/static/caroline.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-                  <strong> {{ user.get_username }} </strong>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" >
-                  <li><a class="dropdown-item" href="#">Favourites</a></li>
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li style="text-align: center;"><a class="btn btn-primary" style="border-radius: 2rem;" href="/Logout">LOGOUT</a></li>
 
-                </ul>
-              </div>
-              {% else %}
-              <a class="btn btn-primary" style="border-radius: 2rem;" href="/Login">LOGIN</a>
-              {% endif %}
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg" aria-label="Thirteenth navbar example">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand col-lg-3 me-0" href="#"
+        style="font-family: 'Nunito Sans', sans-serif; font-size:xx-large;"><b><span
+            style="color: orangered;">M</span><span style="color: black">ake</span><span
+            style="color: orangered;">T</span><span style="color: black;">rips</span></b></a>
+      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <ul class="navbar-nav col-lg-6 " style="justify-content: space-evenly;">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#section1">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#section2">Book</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#section3">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#section4">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#section5">Reviews</a>
+          </li>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end" style="right: 40px; position: absolute;">
+            <form class="d-flex" style="margin-right: 20px;" role="search" action="/search" method="POST">
+              {%csrf_token%}
+              <input class="form-control " required name="search_box"
+                style="border-radius: 2rem;  border-top-right-radius: 0;border-bottom-right-radius: 0;" type="search"
+                placeholder="Search Places" aria-label="Search">
+              <button class="btn"
+                style="margin-right: 2px; background: white; border: var(--bs-border-width) solid var(--bs-border-color); border-radius: 2rem; border-bottom-left-radius: 0;border-top-left-radius: 0;"
+                type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            {% if user.is_authenticated%}
+            <div class="dropdown">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="/static/caroline.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong style="color: black;"> {{ user.get_username }} </strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Favourites</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li style="text-align: center;"><a class="btn btn-primary" style="border-radius: 2rem;"
+                    href="/Logout">LOGOUT</a></li>
+
+              </ul>
             </div>
-          </ul>
-        </div>
+            {% else %}
+            <a class="btn btn-primary" style="border-radius: 2rem;" href="/Login">LOGIN</a>
+            {% endif %}
+          </div>
+        </ul>
       </div>
-    </nav>
-    {%block body%}{% endblock body%}
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
+    </div>
+  </nav>
+  {%block body%}{% endblock body%}
+  <!-- footer  -->
+  <footer>
+    <div class="aboutb">
+      <div class="fdesc">
+        <h3>About</h3>
+        <p>
+          MakeTrips is a comprehensive tour planning website that aims to simplify the process of organizing and booking
+          trips for travelers. The platform offers a wide range of features and tools to assist users in creating
+          personalized itineraries, finding the best deals on flights and accommodations, and discovering unique
+          experiences at their chosen destinations.
+        </p>
+      </div>
+      <div class="fnav">
+        <a href="#section1">Home</a>
+        <a href="#section2">Book</a>
+        <a href="#section3">Gallery</a>
+        <a href="#section4">Packages</a>
+        <a href="#section5">Reviews</a>
+      </div>
+    </div>
+    <hr>
+    <div class="bottomfooter">
+      <span style="color: white;">Copyright &copy; MakeTrips</span>
+      <div>
+        <i class="fa-brands fa-facebook fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-twitter fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-linkedin fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-youtube fa-2xl" style="color: red;"></i>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

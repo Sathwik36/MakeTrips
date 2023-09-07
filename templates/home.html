@@ -80,7 +80,7 @@
       <img src="/static/booking.jpg" alt="">
     </div>
     <div class="forform">
-      <form action="/book" method="POST">
+      <form action="/bookhotel" method="POST">
         {%csrf_token%}
         <div class="mb-3">
           <label for="to" class="form-label">To</label>
@@ -406,34 +406,25 @@
 
   </div>
   <!-- display review  -->
-  <div class="mb-10">
-    <h2>Reviews:</h2>
-    <!-- {% for x in querys %}
-        {{x.username}}<br>
-        {{x.review_place}}<br>
-        {{x.rating_no}}<br>
-       {{ x.review_desc }} <br>
-
-      {% endfor %} -->
-    <div class="rcon mb-20">
-      {% for x in querys %}
-      <div class="item">
-        <div class="rhead">
-          <img src="user.png" alt="">
-          <h2>{{x.username}}</h2>
-        </div>
-        <div class="rbody">
-          <h4>{{x.review_place}}</h4>
-          <!-- stars -->
-          {{x.rating_no}}
-          <p>{{ x.review_desc }}</p>
-        </div>
+  <div class="rcon mb-20">
+    {% for x in querys %}
+    <div class="item">
+      <div class="rhead">
+        <img src="/static/user.png" alt="">
+        <h2> {{x.username|capfirst}}</h2>
       </div>
-      {% endfor %}
+      <div class="rbody">
+        <h4>{{x.review_place|capfirst}}</h4>
+        <!-- stars -->
+        <h4 style="display: inline;">Rating: </h4><b>{{x.rating_no}}/5</b>
+        {% comment %} {% for i in %}
+        <i class="fa-solid fa-star"></i>
+        {% endfor %} {% endcomment %}
+        <p>{{ x.review_desc }}</p>
+      </div>
     </div>
-
+    {% endfor %}
   </div>
-
   <!-- Add review -->
   <div class="addreview">
     {% if user.is_authenticated %}
@@ -559,39 +550,5 @@
 
 </section>
 
-<!-- footer  -->
-<footer>
-  <div class="aboutb">
-    <div class="fdesc">
-      <h3>About</h3>
-      <p>
-        Planning a travel can be exciting and challenging. It involves researching destinations, creating an
-        itinerary, and managing logistics. A successful travel requires careful planning, attention to detail,
-        and strong organizational skills. It is important to consider factors such as budget, transportation,
-        accommodations, and activities. You should also research the local culture, customs, and laws to ensure a
-        smooth and enjoyable trip. To make the most of your travel, consider hiring a travel agent or joining
-        a group tour. They can provide valuable insights and help you navigate unfamiliar territory. With the right
-        planning and preparation, a travel can be a rewarding and unforgettable experience.
-      </p>
-    </div>
-    <div class="fnav">
-      <a href="#section1">Home</a>
-      <a href="#section2">Book</a>
-      <a href="#section3">Gallery</a>
-      <a href="#section4">Packages</a>
-      <a href="#section5">Reviews</a>
-    </div>
-  </div>
-  <hr>
-  <div class="bottomfooter">
-    <span style="color: white;">Copyright &copy; MakeTrips</span>
-    <div>
-      <i class="fa-brands fa-facebook fa-2xl" style="color: blue;"></i>
-      <i class="fa-brands fa-twitter fa-2xl" style="color: blue;"></i>
-      <i class="fa-brands fa-linkedin fa-2xl" style="color: blue;"></i>
-      <i class="fa-brands fa-youtube fa-2xl" style="color: red;"></i>
-    </div>
-  </div>
-</footer>
 
 {% endblock body %}

@@ -30,6 +30,17 @@ class Myreviews(models.Model):
     # def __str__(self) :
     #     return self.username
 
+class Hotels(models.Model):
+    hotel_name=models.CharField( max_length=50)
+    hotel_location=models.CharField( max_length=50)
+    hotel_Mainimage=models.ImageField(upload_to="hotels")
+    hotel_image1=models.ImageField(upload_to="hotels")
+    hotel_image2=models.ImageField(upload_to="hotels")
+    hotel_image3=models.ImageField(upload_to="hotels")
+    def __str__(self):
+        return self.hotel_name
+
+
 # class trip(models.Model):
 #     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
 #     place_name=models;models.CharField( max_length=50)

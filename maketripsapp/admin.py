@@ -4,3 +4,4 @@ from maketripsapp.models import *
 admin.site.register(Feedback)
 admin.site.register(Place)
 admin.site.register(Myreviews)
+admin.site.register(Hotels)

@@ -81,5 +81,8 @@ def addreview(request):
             
         )
         myrevw.save()
-    return render(request,'home.html', {'querys':Myreviews.objects.all()})
+    return redirect("/")
+
+def bookhotel(request):
+    return render(request,'hotels.html')
     
