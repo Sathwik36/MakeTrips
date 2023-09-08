@@ -12,5 +12,6 @@ urlpatterns = [
     path('gallery',views.gallery,name="gallery"),
     path('search',views.search,name="search"),
     path('addreview',views.addreview,name="addreview"),
-    path('bookhotel',views.bookhotel,name="bookhotel")
+    path('bookhotel',views.bookhotel,name="bookhotel"),
+    path('hotel/<int:hid>',views.hotel,name="hotel")
 ]

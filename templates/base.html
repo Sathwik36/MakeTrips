@@ -194,19 +194,21 @@
       grid-gap: 2rem;
       justify-content: space-evenly;
     }
-    .boxitem img{
+
+    .boxitem {
+      width: 325px;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .boxitem img {
       width: 100%;
       height: 200px;
       border-radius: 15px;
     }
 
-    .boxitem{
-      width: 300px;
-      border: 2px solid transparent;
-      border-radius: 15px;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-    }
-    .boxdesc{
+    .boxdesc {
       padding: 10px;
     }
 
@@ -245,6 +247,7 @@
     .pcard:hover,
     .rbox:hover,
     .item:hover,
+    .boxitem:hover,
     .blog1:hover,
     .blog3 .card:hover {
       box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
@@ -404,43 +407,6 @@
 
     }
 
-    .blog2cont {
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    .blog2 {
-      width: 40%;
-      margin-top: 20px;
-      height: 300px;
-      margin-bottom: 50px;
-
-    }
-
-    .blog2 img {
-      height: 100%;
-      width: 100%;
-      position: relative;
-    }
-
-    .blog2 .b2desc {
-      color: white;
-      position: absolute;
-      display: inline-block;
-      width: 15%;
-      left: 8%;
-      padding: 15px 0px;
-    }
-
-    .blog2:nth-child(2) .b2desc {
-      left: 54%;
-    }
-
-    .blog2 img:hover {
-      transform: scale(1.05);
-      transition: .3s;
-    }
-
     .blog3 {
       display: flex;
       flex-wrap: wrap;
@@ -513,7 +479,8 @@
         width: 40%;
       }
 
-      .rcon,.fourcont {
+      .rcon,
+      .fourcont {
         grid-template-columns: auto auto;
       }
     }
@@ -549,7 +516,8 @@
         flex-direction: column;
       }
 
-      .rcon,.fourcont {
+      .rcon,
+      .fourcont {
         grid-template-columns: auto;
       }
 

@@ -92,3 +92,7 @@ def bookhotel(request):
         )
         return render(request,'hotels.html',{'hotels':splace_hotels})
     
+def hotel(request,hid):
+    hotel=Hotels.objects.filter(id=hid)
+    return render(request,'hotel.html',{'hotel':hotel})
+    

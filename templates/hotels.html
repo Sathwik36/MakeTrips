@@ -3,6 +3,7 @@
 
 {% block body %}
 <h1>Hotels:</h1>
+<hr>
 <div class="fourcont">
     {% for h in hotels %}
     <div class="boxitem">
@@ -21,7 +22,7 @@
             <hr>
             <p>{{h.hotel_desc}}</p>
             <a class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
-                href="/hotel">BOOK NOW</a>
+                href="/hotel/{{h.id}}">BOOK NOW</a>
         </div>
     </div>
     {% endfor %}

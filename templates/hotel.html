@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}hotel name{% endblock title %}
+
+{% block body %}
+{% for h in hotel %}
+<h1>{{h.hotel_name}}</h1>
+{% endfor %}
+{% endblock body %}
