@@ -249,6 +249,7 @@
     .item:hover,
     .boxitem:hover,
     .blog1:hover,
+    .room:hover,
     .blog3 .card:hover {
       box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.5);
     }
@@ -469,6 +470,59 @@
       color: black;
     }
 
+    .hotelcont{
+      display: flex;
+      justify-content: space-evenly;
+      padding: 20px;
+    }
+    .hotelcont .boxdesc{
+      width: 20%;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+
+    .imgcontainer{
+      padding: 5px;
+      width: 50%;
+    }
+    .imgcontainer .mainimg{
+      width: 100%;
+      height: 400px;
+      margin-bottom: 10px;
+    }
+    .imgcontainer .mainimg img{
+      width: 100%;
+      height: 100%;
+    }
+    .imgcontainer .himg{
+      height: 150px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .imgcontainer .himg img{
+      width: 22%;
+      height: 100%;
+    }
+    .broom{
+      width: 80%;
+      margin: auto;
+      padding: 10px;
+    }
+    .room{
+      display: flex;
+      justify-content: space-evenly;
+      height: 250px;
+      margin-bottom: 20px;
+    }
+    .roomd{
+      width: 30%;
+      padding: 10px;
+    }
+    .roomd img{
+      width: 100%;
+      height: 100%;
+    }
+
     @media screen and (min-width:767px) and (max-width: 1023px) {
       .pcard {
         width: 49.99999%;
@@ -477,6 +531,10 @@
 
       .rbox {
         width: 40%;
+      }
+
+      .heading {
+        font-size: 60px;
       }
 
       .rcon,
@@ -491,7 +549,7 @@
       }
 
       .heading {
-        font-size: 64px;
+        font-size: 35px;
       }
 
       .container .forimg,
