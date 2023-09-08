@@ -32,7 +32,11 @@ class Myreviews(models.Model):
 
 class Hotels(models.Model):
     hotel_name=models.CharField( max_length=50)
+    hotel_addresss=models.TextField()
+    hotel_rating=models.IntegerField()
+    hotel_price=models.IntegerField()
     hotel_location=models.CharField( max_length=50)
+    hotel_desc=models.TextField()
     hotel_Mainimage=models.ImageField(upload_to="hotels")
     hotel_image1=models.ImageField(upload_to="hotels")
     hotel_image2=models.ImageField(upload_to="hotels")

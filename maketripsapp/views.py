@@ -60,6 +60,7 @@ def home(request):
 
 def gallery(request):
     return render(request,'gallery.html')
+
 def search(request):
     if request.method=="POST":
         searchedb=request.POST['search_box']
@@ -84,5 +85,10 @@ def addreview(request):
     return redirect("/")
 
 def bookhotel(request):
-    return render(request,'hotels.html')
+    if request.method=="POST":
+        splace=request.POST.get('to_place')
+        splace_hotels=Hotels.objects.filter(
+            Q(hotel_location__icontains=splace)
+        )
+        return render(request,'hotels.html',{'hotels':splace_hotels})
     

@@ -4,85 +4,26 @@
 {% block body %}
 <h1>Hotels:</h1>
 <div class="fourcont">
-    <div class="item">
-        <img src="/static/icelandsp.jpg" alt="">
+    {% for h in hotels %}
+    <div class="boxitem">
+        <img src="/media/{{h.hotel_Mainimage}}" alt="">
         <div class="boxdesc">
-            <ul style="list-style-type: none;"></ul>
-            <span><h2>Hotel name</h2></span>
-            <span>rating</span>
-            <h3>Location</h3>
+            <span>
+                <h2>{{h.hotel_name}}</h2>
+                <span> Rating:{{h.hotel_rating}}/10</span>
+                <h5>{{h.hotel_addresss}}</h5>
+            </span>
             <hr>
-            <span>Price per night :</span>
-            <span><b>₹</b>  /-</span>
+            <div style="display: flex;justify-content: space-between;">
+                <h5>Price per Night :</h5>
+                <span><b>₹</b>{{h.hotel_price}} /-</span>
+            </div>
             <hr>
-            <p>hotel desc</p>
-            
-                <li style="text-align: center;">
-                    <a class="btn btn-primary" style="border-radius: 2rem;" href="/Logout">BOOK NOW</a>
-                </li>
-            </ul>
-             
+            <p>{{h.hotel_desc}}</p>
+            <a class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
+                href="/hotel">BOOK NOW</a>
         </div>
     </div>
-    <div class="item">
-        <img src="/static/icelandsp.jpg" alt="">
-        <div class="boxdesc">
-            <ul style="list-style-type: none;"></ul>
-            <span><h2>Hotel name</h2></span>
-            <span>rating</span>
-            <h3>Location</h3>
-            <hr>
-            <span>Price per night :</span>
-            <span><b>₹</b>  /-</span>
-            <hr>
-            <p>hotel desc</p>
-            
-                <li style="text-align: center;">
-                    <a class="btn btn-primary" style="border-radius: 2rem;" href="/Logout">BOOK NOW</a>
-                </li>
-            </ul>
-             
-        </div>
-    </div>
-    <div class="item">
-        <img src="/static/icelandsp.jpg" alt="">
-        <div class="boxdesc">
-            <ul style="list-style: none;"></ul>
-            <span><h2>Hotel name</h2></span>
-            <span>rating</span>
-            <h3>Location</h3>
-            <hr>
-            <span>Price per night :</span>
-            <span><b>₹</b>  /-</span>
-            <hr>
-            <p>hotel desc</p>
-            
-                <li style="text-align: center;">
-                    <a class="btn btn-primary" style="border-radius: 2rem;" href="/Logout">BOOK NOW</a>
-                </li>
-            </ul>
-             
-        </div>
-    </div>
-    <div class="item">
-        <img src="/static/icelandsp.jpg" alt="">
-        <div class="boxdesc">
-            <ul style="list-style-type: none;"></ul>
-            <span><h2>Hotel name</h2></span>
-            <span>rating</span>
-            <h3>Location</h3>
-            <hr>
-            <span>Price per night :</span>
-            <span><b>₹</b>  /-</span>
-            <hr>
-            <p>hotel desc</p>
-            
-                <li style="text-align: center;">
-                    <a class="btn btn-primary" style="border-radius: 2rem;" href="/Logout">BOOK NOW</a>
-                </li>
-            </ul>
-             
-        </div>
-    </div>
+    {% endfor %}
 </div>
 {% endblock body %}
