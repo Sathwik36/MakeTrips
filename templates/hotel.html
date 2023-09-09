@@ -4,6 +4,7 @@
 {% block body %}
 {% for h in hotel %}
 <h1 class="heading">{{h.hotel_name}}</h1>
+<!-- Hotel  -->
 <div class="hotelcont">
     <div class="imgcontainer">
         <div class="mainimg">
@@ -36,6 +37,7 @@
         <span><b>Mail <i class="fa-solid fa-envelope"></i> : madmax@maketrips.com</b></span>
     </div>
 </div>
+<!-- Rooms  -->
 <div class="broom">
     <h2>Room Types :</h2>
     <hr>
@@ -56,10 +58,10 @@
                 <h5>Price per Night :</h5>
                 <span><b>₹</b>{{h.hotel_price}} /-</span>
             </div>
-            <a class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
-                href="/book">BOOK NOW</a>
+            <button class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
+                onclick="fill()">BOOK NOW</button>
         </div>
-    </div>
+    </div><hr>
     <div class="room">
         <div class="roomd">
             <img src="/static/singlerooom.jpg" alt="">
@@ -71,15 +73,16 @@
         </div>
         <div class="roomd"
             style="display: flex;flex-direction: column;justify-content: space-around;border-left: 0.5px solid black; ">
-            <span style="display: flex;justify-content: space-between;"><b>Max :</b><b><i class="fa-solid fa-user"></i></b> </span>
+            <span style="display: flex;justify-content: space-between;"><b>Max :</b><b><i
+                        class="fa-solid fa-user"></i></b> </span>
             <div style="display: flex;justify-content: space-between;">
                 <h5>Price per Night :</h5>
                 <span><b>₹</b> 7,999 /-</span>
             </div>
-            <a class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
-                href="/book">BOOK NOW</a>
+            <button class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
+                onclick="fill()">BOOK NOW</button>
         </div>
-    </div>
+    </div><hr>
     <div class="room">
         <div class="roomd">
             <img src="/static/familyroom.jpg" alt="">
@@ -99,12 +102,66 @@
                 <h5>Price per Night :</h5>
                 <span><b>₹</b> 30,000 /-</span>
             </div>
-            <a class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
-                href="/book">BOOK NOW</a>
+            <button class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
+                onclick="fill()">BOOK NOW</button>
         </div>
     </div>
-    
-
 </div>
 {% endfor %}
+<!-- Traveller details -->
+<div id="travellerdetails" >
+    <div id="infoform" >
+        <div style="display: flex;justify-content: space-between;">
+            <h2>Traveller Details:</h2>
+            <i class="fa-solid fa-xmark fa-2xl" style="color: #000000;align-self: center; " onclick="closeform()"></i>
+        </div>
+        <hr>
+        <form action="/book" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Firstname</label>
+                <input type="text" required class="form-control" id="firstname">
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Lastname</label>
+                <input type="text" required class="form-control" id="lastname">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">You'll receive a confirmation mail</div>
+            </div>
+            <div class="mb-3">
+                <label for="Contact_no" class="form-label">Contact_no</label>
+                <input type="tel" required class="form-control" id="Contact_no">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" required class="form-control" id="address">
+            </div>
+            <div class="mb-3">
+                <label for="address_s" class="form-label">Town / City / State </label>
+                <input type="text" required class="form-control" id="address_s">
+            </div>
+            <div class="mb-3">
+                <label for="pincode" class="form-label">Pincode </label>
+                <input type="text" required class="form-control" id="pincode">
+            </div>
+            <div class="mb-3">
+                <label for="Country" class="form-label">Country </label>
+                <input type="text" required class="form-control" id="Country">
+            </div>
+            <div class="form-floating mb-3" >
+                <textarea class="form-control" placeholder="Special Requirements" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Special Requirements:</label>
+              </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" required class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div id="emailHelp" class="form-text">I have entered my details correctly</div>
+            </div>
+            <button type="submit" class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; ">Submit</button>
+        </form>
+    </div>
+</div>
 {% endblock body %}

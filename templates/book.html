@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function printarea() {
+            var booking_data=document.getElementById("confirmation").innerHTML;
+            var originalcont=document.body.innerHTML;
+            document.body.innerHTML=booking_data;
+            window.print();
+            document.body.innerHTML=originalcont;
+        }
+    </script>
+</head>
+<body>
+    <h1>Your Booking is successfull ...</h1>
+    <div id="confirmation">
+        <h1>TRAVELLER DETAILS:</h1>
+        <hr>
+        <div class="infodesc" style="display: grid; grid-template-columns: auto auto;">
+            <p>First Name :</p>
+            <p>Klaus</p>
+            <p>Last Name :</p>
+            <p>Mikaelson</p>
+            <p>E-Mail Address :</p>
+            <p>madmax@maketrips.com</p>
+            <p>Contact Number :</p>
+            <p>121412141214</p>
+            
+        </div>
+    </div>
+    <button class="btn btn-primary" onclick="printarea()">Print Booking</button>
+</body>
+</html>

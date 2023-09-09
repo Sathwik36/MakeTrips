@@ -33,7 +33,8 @@ urlpatterns = [
     path('search',include('maketripsapp.urls')),
     path('addreview',include('maketripsapp.urls')),
     path('bookhotel',include('maketripsapp.urls')),
-    path('hotel',include('maketripsapp.urls'))
+    path('hotel',include('maketripsapp.urls')),
+    path('book',include('maketripsapp.urls'))
 
 ]
 

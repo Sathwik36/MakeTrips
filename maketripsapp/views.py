@@ -95,4 +95,7 @@ def bookhotel(request):
 def hotel(request,hid):
     hotel=Hotels.objects.filter(id=hid)
     return render(request,'hotel.html',{'hotel':hotel})
+
+def book(request):
+    return render(request,'book.html')
     
