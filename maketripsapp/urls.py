@@ -14,5 +14,5 @@ urlpatterns = [
     path('addreview',views.addreview,name="addreview"),
     path('bookhotel',views.bookhotel,name="bookhotel"),
     path('hotel/<int:hid>',views.hotel,name="hotel"),
-    path('book',views.book,name="book")
+    path('book/<HotelName>',views.book,name="book")
 ]

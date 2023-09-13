@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Booking Details</title>
     <script>
         function printarea() {
-            var booking_data=document.getElementById("confirmation").innerHTML;
-            var originalcont=document.body.innerHTML;
-            document.body.innerHTML=booking_data;
+            var booking_data = document.getElementById("confirmation").innerHTML;
+            var originalcont = document.body.innerHTML;
+            document.body.innerHTML = booking_data;
             window.print();
-            document.body.innerHTML=originalcont;
+            document.body.innerHTML = originalcont;
         }
     </script>
 </head>
+
 <body>
-    <h1>Your Booking is successfull ...</h1>
+    <h1>Your Booking is Successfull ...</h1>
     <div id="confirmation">
         <h1>TRAVELLER DETAILS:</h1>
         <hr>
         <div class="infodesc" style="display: grid; grid-template-columns: auto auto;">
+            {% for b in booking_info %}
+            <p>Booking ID :</p>
+            <p>{{b.booking_id}}</p>
+            <p>Hotel Name :</p>
+            <p>{{b.h_name}}</p>
             <p>First Name :</p>
-            <p>Klaus</p>
+            <p>{{b.T_FirstName}}</p>
             <p>Last Name :</p>
-            <p>Mikaelson</p>
+            <p>{{b.T_LastName}} </p>
             <p>E-Mail Address :</p>
-            <p>madmax@maketrips.com</p>
+            <p>{{b.T_email}} </p>
             <p>Contact Number :</p>
-            <p>121412141214</p>
-            
+            <p>{{b.T_contactNo}} </p>
+            <p>Address :</p>
+            <p>{{b.T_address}},{{b.T_pincode}} </p>
+            <p>Room Booked :</p>
+            <p>{{b.room_type}} </p>
+            <p>Number of Nights Booked :</p>
+            <p>{{b.days}} </p>
+            <p>Country :</p>
+            <p>{{b.T_country}} </p>
         </div>
+        <hr>
+        <h2>Special Requirements :</h2>
+        {{b.special_req}}
+        {% endfor %}
     </div>
     <button class="btn btn-primary" onclick="printarea()">Print Booking</button>
 </body>
+
 </html>

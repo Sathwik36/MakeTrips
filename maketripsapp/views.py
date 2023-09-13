@@ -1,11 +1,13 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
 from maketripsapp.models import *
 from django.db.models import Q
 from datetime import datetime
+import random
 
 
 # Create your views here.
@@ -26,7 +28,10 @@ def verify(request):
             # return render(request,'home.html')
             login(request, user)
             messages.success(request,"Successfully Logged In")
-            return redirect("/home")
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect("/home")
         else:
             # No backend authenticated the credentials
             messages.error(request,"Invalid Cresentials")
@@ -92,10 +97,42 @@ def bookhotel(request):
         )
         return render(request,'hotels.html',{'hotels':splace_hotels})
     
+@login_required(login_url='Login')
 def hotel(request,hid):
     hotel=Hotels.objects.filter(id=hid)
     return render(request,'hotel.html',{'hotel':hotel})
 
-def book(request):
-    return render(request,'book.html')
+def book(request,HotelName):
+    if request.method=="POST":
+        username=request.user
+        booking_id=random.randint(111111,999999)
+        h_name=HotelName
+        fname=request.POST.get('tfname')
+        lname=request.POST.get('tlname')
+        email=request.POST.get('temail')
+        phone=request.POST.get('tphone')
+        addr=request.POST.get('taddress')
+        room=request.POST['troom']
+        tdays=request.POST.get('tdays')
+        tpin=request.POST.get('tpin')
+        country=request.POST.get('country')
+        sreq=request.POST.get('sreq')
+        travelinfo=TravellerDetail.objects.create(
+            username=username,
+            booking_id=booking_id,
+            h_name=h_name,
+            T_FirstName=fname,
+            T_LastName=lname,
+            T_email=email,
+            T_contactNo=phone,
+            T_address=addr,
+            room_type=room,
+            days=tdays,
+            T_pincode=tpin,
+            T_country=country,
+            special_req=sreq,
+        )
+        travelinfo.save()
+        booking_info=TravellerDetail.objects.filter(T_FirstName=fname)
+    return render(request,'book.html',{'booking_info':booking_info})
     

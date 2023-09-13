@@ -141,6 +141,9 @@
             <p>Login</p>
             <form action="/verify" method="POST">
                 {% csrf_token %}
+                {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                {% endif %}
                 <div class="user-box">
                     <input required="true" name="username" type="text">
                     <label>Enter your Username</label>
