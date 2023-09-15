@@ -1,80 +1,65 @@
-<!doctype html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}{% for x in searched %}{{x.placename}}{% endfor %}{% endblock title %}
+{% block body %}
+{% for x in searched %}
+<h1 style="margin-top: -35px;" class="heading">{{x.placename}}</h1>
+<div class="simgcont">
+  <div class="smain">
+    <img src="https://source.unsplash.com/random/?{{x.placename}}" alt="{{x.placename}}">
+  </div>
+  <div class="ssec">
+    <img src="https://source.unsplash.com/random/?{{x.splace1}}s" alt="{{x.splace1}}">
+    <img src="https://source.unsplash.com/random/?{{x.splace2}}" alt="{{x.splace2}}">
+    <img src="https://source.unsplash.com/random/?{{x.splace3}}s" alt="{{x.splace3}}">
+    <img src="https://source.unsplash.com/random/?{{x.splace4}}s" alt="{{x.splace4}}">
+    <img src="https://source.unsplash.com/random/?{{x.splace5}}s" alt="{{x.splace5}}">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Make Trips</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <style>
-    .heading {
-      background: url(/static/background.jpg) center center/cover no-repeat;
-      color: #de466c;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font: normal 800 100px Fira Code, Sans-serif;
-      display: flex;
-      justify-content: center;
-    }
-    img{
-      border: 3px solid white;
-      border-radius: 10px;
-    }
-    .smain{
-      display: flex;
-      justify-content: space-evenly;
-      margin-bottom: 10px;
-    }
-    .smain img {
-      width: 70%;
-      height: 500px;
-      margin: auto;
-    }
-
-    .more {
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    .more img {
-      width: 27%;
-      height: 300px;
-    }
-  </style>
-</head>
-
-<body>
-  <section>
-    {% for x in searched %}
-    <h1 class="heading">{{x.placename}}</h1>
-    <div>
-      <div class="smain">
-        <img src="/media/{{x.placeimage}}" alt="">
-      </div>
-      <hr>
-      <div class="more">
-        <img src="/media/{{x.placeimage2}}">
-        <img src="/media/{{x.placeimage3}}">
-        <img src="/media/{{x.placeimage4}}">
-      </div>
-      <hr>
-      <div class="desc">
-       <h5> {{x.placedescription}}</h5>
-      </div>
+  </div>
+</div>
+<p style="width: 90%;margin: auto;"><b>{{x.placedescription}}</b></p>
+<hr>
+<div class="broom">
+  <div class="room">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace1}}" alt="{{x.splace1}}">
+    <div style="width: 60%;">
+      <h2>{{x.splace1|capfirst}}</h2>
+      <p>{{x.splace1description}}</p>
     </div>
-    {% endfor %}
-  </section>
-  <section>
-    <div class="hotels">
-      
+  </div>
+  <hr>
+  <div class="room">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace2}}" alt="{{x.splace2}}">
+    <div style="width: 60%;">
+      <h2>{{x.splace2|capfirst}}</h2>
+      <p>{{x.splace2description}}</p>
     </div>
-  </section>
+  </div>
+  <hr>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
-</body>
+  <div class="room">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace3}}" alt="{{x.splace3}}">
+    <div style="width: 60%;">
+      <h2>{{x.splace3|capfirst}}</h2>
+      <p>{{x.splace3description}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="room">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace4}}" alt="{{x.splace4}}">
+    <div style="width: 60%;">
+      <h2>{{x.splace4|capfirst}}</h2>
+      <p>{{x.splace4description}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="room">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace5}}" alt="{{x.splace5}}">
+    <div style="width: 60%;">
+      <h2>{{x.splace5|capfirst}}</h2>
+      <p>{{x.splace5description}}</p>
+    </div>
+  </div>
 
-</html>
+</div>
+{% endfor %}
+{% endblock body %}

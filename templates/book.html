@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Booking Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script>
         function printarea() {
             var booking_data = document.getElementById("confirmation").innerHTML;
@@ -14,42 +16,74 @@
             document.body.innerHTML = originalcont;
         }
     </script>
+    <style>
+        #confirmation {
+            width: 53%;
+            margin: auto;
+            padding: 30px;
+        }
+
+        img {
+            border-radius: 10px;
+            display: block;
+            width: 500px;
+            height: 260px;
+            margin: auto;
+        }
+
+        @media screen and (max-width: 767px) {
+            #confirmation {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <h1>Your Booking is Successfull ...</h1>
     <div id="confirmation">
-        <h1>TRAVELLER DETAILS:</h1>
+        <h1 style="font-family: 'Times New Roman', Times, serif;"><b><span style="color: orangered;">T</span><span
+                    style="color: black">raveller </span><span style="color: orangered;">D</span><span
+                    style="color: black;">etails :</span></b></h1>
         <hr>
-        <div class="infodesc" style="display: grid; grid-template-columns: auto auto;">
+        <div class="infodesc" style="display: grid; grid-template-columns: 40% 40%; justify-content: space-evenly;">
             {% for b in booking_info %}
             <p>Booking ID :</p>
             <p>{{b.booking_id}}</p>
             <p>Hotel Name :</p>
-            <p>{{b.h_name}}</p>
+            <p>{{b.h_name|capfirst}}</p>
             <p>First Name :</p>
-            <p>{{b.T_FirstName}}</p>
+            <p>{{b.T_FirstName|capfirst}}</p>
             <p>Last Name :</p>
-            <p>{{b.T_LastName}} </p>
+            <p>{{b.T_LastName|capfirst}} </p>
             <p>E-Mail Address :</p>
             <p>{{b.T_email}} </p>
             <p>Contact Number :</p>
             <p>{{b.T_contactNo}} </p>
             <p>Address :</p>
-            <p>{{b.T_address}},{{b.T_pincode}} </p>
+            <p>{{b.T_address|capfirst}},{{b.T_pincode}} </p>
             <p>Room Booked :</p>
             <p>{{b.room_type}} </p>
             <p>Number of Nights Booked :</p>
             <p>{{b.days}} </p>
             <p>Country :</p>
-            <p>{{b.T_country}} </p>
+            <p>{{b.T_country|capfirst}} </p>
         </div>
         <hr>
         <h2>Special Requirements :</h2>
-        {{b.special_req}}
-        {% endfor %}
+        {{b.special_req|capfirst}}
     </div>
-    <button class="btn btn-primary" onclick="printarea()">Print Booking</button>
+    <button class="btn btn-info " style="display: block;
+    width: auto; margin: auto;" onclick="printarea()">Print Booking </button>
+    <p>
+        <b>Payment Details are sent your mail : {{b.T_email}} </b>
+    </p>
+    {% endfor %}
+    <p>Click Here to go <a href="/home">Home.</a></p>
+    <img src="/static/ThankYou.jpg" alt="">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

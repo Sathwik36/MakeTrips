@@ -15,10 +15,17 @@ class Feedback(models.Model):
 class Place(models.Model):
     placename=models.CharField(max_length=20,primary_key=True)
     placedescription=models.TextField()
-    placeimage=models.ImageField(upload_to="places")
-    placeimage2=models.ImageField(upload_to="places")
-    placeimage3=models.ImageField(upload_to="places")
-    placeimage4=models.ImageField(upload_to="places")
+    splace1=models.CharField( max_length=50)
+    splace1description=models.TextField()
+    splace2=models.CharField( max_length=50)
+    splace2description=models.TextField()
+    splace3=models.CharField( max_length=50)
+    splace3description=models.TextField()
+    splace4=models.CharField( max_length=50)
+    splace4description=models.TextField()
+    splace5=models.CharField( max_length=50)
+    splace5description=models.TextField()
+
     def __str__(self):
         return self.placename
     
@@ -51,7 +58,7 @@ class TravellerDetail(models.Model):
     T_FirstName=models.CharField(max_length=50)
     T_LastName=models.CharField(max_length=50)
     T_email=models.EmailField(max_length=254)
-    T_contactNo=models.CharField(max_length=20)
+    T_contactNo=models.CharField(max_length=20,unique=True)
     T_address=models.CharField(max_length=70)
     room_type=models.CharField( max_length=100)
     days=models.IntegerField()

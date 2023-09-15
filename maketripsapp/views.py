@@ -133,6 +133,6 @@ def book(request,HotelName):
             special_req=sreq,
         )
         travelinfo.save()
-        booking_info=TravellerDetail.objects.filter(T_FirstName=fname)
+        booking_info=TravellerDetail.objects.filter(T_contactNo=phone)
     return render(request,'book.html',{'booking_info':booking_info})
     
