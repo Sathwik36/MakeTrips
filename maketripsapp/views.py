@@ -83,7 +83,7 @@ def addreview(request):
             username=username,
             review_place=review_place,
             rating_no=rating,
-             review_desc=review,
+            review_desc=review,
             
         )
         myrevw.save()
