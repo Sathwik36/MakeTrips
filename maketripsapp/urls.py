@@ -9,10 +9,12 @@ urlpatterns = [
     path('signup',views.signup,name="signup"),
     path('register',views.register,name="register"),
     path('home',views.home,name="home"),
-    path('gallery',views.gallery,name="gallery"),
+    path('gallery',views.gallerytemp,name="gallery"),
     path('search',views.search,name="search"),
     path('addreview',views.addreview,name="addreview"),
     path('bookhotel',views.bookhotel,name="bookhotel"),
     path('hotel/<int:hid>',views.hotel,name="hotel"),
-    path('book/<HotelName>',views.book,name="book")
+    path('book/<HotelName>',views.book,name="book"),
+    path('gallery/<galleryplace>',views.gallery,name="gallery"),
+    path('view_more_gallery',views.view_more_gallery,name="view_more_gallery")
 ]

@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from maketripsapp.models import *
+from .apifunc import Search_image
 from django.db.models import Q
 from datetime import datetime
 import random
-
+from django.conf import settings
 
 # Create your views here.
 def Login(request):
@@ -37,7 +38,6 @@ def verify(request):
             messages.error(request,"Invalid Cresentials")
             return render(request,'login.html')
 
-
 def signup(request):
     return render(request,'signup.html')
 
@@ -57,21 +57,39 @@ def register(request):
         )
         user.set_password(password)
         user.save()
-
     return redirect('/')
 
 def home(request):
-    return render(request,'home.html', {'querys':Myreviews.objects.all()})
+    return render(request,'home.html', {'querys':Myreviews.objects.all() , 'galleries':Gallery.objects.all()})
 
-def gallery(request):
+def gallerytemp(request):
     return render(request,'gallery.html')
+
+def gallery(request,galleryplace):
+    data=Search_image(galleryplace)
+    image_data = [ images["urls"]["regular"] for images in data["results"]]
+    return render(request,'gallery.html',{'images':image_data})
+
+def view_more_gallery(request):
+    if request.method=="POST":
+        query=request.POST.get('search_gallery')
+        data=Search_image(query)
+        if response.status_code==200:
+            image_data = [ images["urls"]["regular"] for images in data["results"]]
+            return render(request,'gallery.html',{'images':image_data})
+        else:
+            return HttpResponse("ERROR ... Unable to load")
 
 def search(request):
     if request.method=="POST":
         searchedb=request.POST['search_box']
-        place=Place.objects.filter(
-            Q(placename__icontains=searchedb) )
-        return render(request,'search_temp.html',{'searched':place})
+        if  Place.objects.filter( Q(placename__icontains=searchedb)).exists() :
+            place=Place.objects.filter( Q(placename__icontains=searchedb) )
+            return render(request,'search_temp.html',{'searched':place,'placename':searchedb})
+        else:
+            data=Search_image(searchedb)
+            image_data = [ images["urls"]["regular"] for images in data["results"]]
+            return render(request,'search_temp.html',{'images':image_data,'placename':searchedb})
     
 def addreview(request):
     if request.method=="POST":
@@ -83,8 +101,7 @@ def addreview(request):
             username=username,
             review_place=review_place,
             rating_no=rating,
-            review_desc=review,
-            
+            review_desc=review,            
         )
         myrevw.save()
     return redirect("/")
@@ -135,4 +152,3 @@ def book(request,HotelName):
         travelinfo.save()
         booking_info=TravellerDetail.objects.filter(T_contactNo=phone)
     return render(request,'book.html',{'booking_info':booking_info})
-    

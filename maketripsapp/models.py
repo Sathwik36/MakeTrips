@@ -50,6 +50,13 @@ class Hotels(models.Model):
     hotel_image3=models.ImageField(upload_to="hotels")
     def __str__(self):
         return self.hotel_name
+
+class Gallery(models.Model):
+    Gallery_place=models.CharField(max_length=50,null=True)
+    Gallery_img=models.CharField(max_length=100,null=True)
+    Gallery_place_desc=models.TextField(null=True)
+    def __str__(self):
+        return self.Gallery_place
     
 class TravellerDetail(models.Model):
     username=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)

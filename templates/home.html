@@ -107,63 +107,24 @@
 <!-- Gallery -->
 <div id="gallery" class="container-fluid">
   <p class="heading">GALLERY</p>
-  <div class="box-container">
-    <div class="box">
-      <img src="/static/victoriafalls.jpg" alt="">
-      <div class="cont">
-        <h3>VICTORIA FALLS</h3>
-        <p>Victoria Falls is a waterfall on the Zambezi River in southern Africa, which provides habitat for several
-          unique species.</p>
-        <a href="#" class="buttn">SEE MORE</a>
+  <div class="threecon ">
+    {% for gallery in galleries%}
+    <div class="gcard">
+      <div class="gcard-inner">
+        <div class="gcard-front">
+          <img src="{{gallery.Gallery_img}}" alt="">
+        </div>
+        <div class="gcard-back">
+          <h3>{{gallery.Gallery_place}}</h3>
+          <p>{{gallery.Gallery_place_desc}} </p>
+          <a href="/gallery/{{gallery.Gallery_place}}" class="buttn">SEE MORE</a>
+        </div>
       </div>
     </div>
-    <div class="box">
-      <img src="/static/maldives.jpg" alt="">
-      <div class="cont">
-        <h3>MALDIVES</h3>
-        <p>The Maldives, officially the Republic of Maldives, is an archipelagic state and country in South Asia,
-          situated in the Indian Ocean.</p>
-        <a href="#" class="buttn">SEE MORE</a>
-      </div>
-    </div>
-    <div class="box">
-      <img src="/static/tajmahal.jpg" alt="">
-      <div class="cont">
-        <h3>TAJ MAHAL</h3>
-        <p>The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar
-          Pradesh, India.</p>
-        <a href="#" class="buttn">SEE MORE</a>
-      </div>
-    </div>
-
-    <div class="box">
-      <img src="/static/mountfuji.jpg" alt="">
-      <div class="cont">
-        <h3>MOUNT FUJI</h3>
-        <p>Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo.</p>
-        <a href="#" class="buttn">SEE MORE</a>
-      </div>
-    </div>
-    <div class="box">
-      <img src="/static/grandcanyon.jpg" alt="">
-      <div class="cont">
-        <h3>GRAND CANYON</h3>
-        <p>The Grand Canyon in Arizona is a natural formation distinguished by layered bands of red rock.</p>
-        <a href="#" class="buttn">SEE MORE</a>
-      </div>
-    </div>
-    <div class="box">
-      <img src="/static/cliffsosmoher.jpg" alt="">
-      <div class="cont">
-        <h3>CLIFFS OF MOHER</h3>
-        <p>The Cliffs of Moher are sea cliffs located at the southwestern edge of the Burren region in County Clare,
-          Ireland. </p>
-        <a href="#" class="buttn">SEE MORE</a>
-      </div>
-    </div>
+    {% endfor %}
   </div>
   <a href="/gallery" class="buttn"
-    style="display: flex; width: 100%; color: black; justify-content: center; margin-bottom: 10px;">View More</a>
+    style="display: flex; width: 70%; margin:auto; justify-content: center; margin-bottom: 10px;">VIEW MORE</a>
 </div>
 
 <!-- Packages -->

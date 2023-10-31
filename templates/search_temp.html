@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{% for x in searched %}{{x.placename}}{% endfor %}{% endblock title %}
+{% block title %}{{placename|capfirst}}{% endblock title %}
 {% block body %}
 {% for x in searched %}
 <h1 style="margin-top: -35px;" class="heading">{{x.placename}}</h1>
@@ -20,7 +20,8 @@
 <hr>
 <div class="broom">
   <div class="room">
-    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace1}}" alt="{{x.splace1}}">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace1}}"
+      alt="{{x.splace1}}">
     <div style="width: 60%;">
       <h2>{{x.splace1|capfirst}}</h2>
       <p>{{x.splace1description}}</p>
@@ -28,7 +29,8 @@
   </div>
   <hr>
   <div class="room">
-    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace2}}" alt="{{x.splace2}}">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace2}}"
+      alt="{{x.splace2}}">
     <div style="width: 60%;">
       <h2>{{x.splace2|capfirst}}</h2>
       <p>{{x.splace2description}}</p>
@@ -37,7 +39,8 @@
   <hr>
 
   <div class="room">
-    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace3}}" alt="{{x.splace3}}">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace3}}"
+      alt="{{x.splace3}}">
     <div style="width: 60%;">
       <h2>{{x.splace3|capfirst}}</h2>
       <p>{{x.splace3description}}</p>
@@ -45,7 +48,8 @@
   </div>
   <hr>
   <div class="room">
-    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace4}}" alt="{{x.splace4}}">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace4}}"
+      alt="{{x.splace4}}">
     <div style="width: 60%;">
       <h2>{{x.splace4|capfirst}}</h2>
       <p>{{x.splace4description}}</p>
@@ -53,7 +57,8 @@
   </div>
   <hr>
   <div class="room">
-    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace5}}" alt="{{x.splace5}}">
+    <img style="width: 30%; height: 100%; padding: 10px;" src="https://source.unsplash.com/random/?{{x.splace5}}"
+      alt="{{x.splace5}}">
     <div style="width: 60%;">
       <h2>{{x.splace5|capfirst}}</h2>
       <p>{{x.splace5description}}</p>
@@ -62,4 +67,13 @@
 
 </div>
 {% endfor %}
+<h1 class="heading">{{placename |capfirst}}</h1>
+<hr>
+<div class="fourcont">
+  {% for image in images %}
+  <div class="gitem">
+    <img src="{{image}}" alt="">
+  </div>
+  {% endfor %}
+</div>
 {% endblock body %}

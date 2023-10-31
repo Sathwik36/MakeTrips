@@ -1,13 +1,21 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gallery</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>This is Gallery</h1>    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Gallery {% endblock title %}
+
+{% block body %}
+<form name="rform" class="search_gallery" action="/view_more_gallery" method="POST">
+  {%csrf_token%}
+  <div class="form__group field">
+    <input type="input" class="form__field" name="search_gallery" placeholder="Enter Search Place" required="">
+    <label for="search_gallery" class="form__label">Search Place</label>
+  </div>
+  <input type="submit" class="buttn" value="SEARCH">
+</form>
+
+<div class="fourcont">
+  {% for image in images %}
+  <div class="gitem">
+    <img src="{{image}}" alt="">
+  </div>
+  {% endfor %}
+</div>
+{% endblock body %}
