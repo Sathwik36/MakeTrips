@@ -123,8 +123,21 @@
     </div>
     {% endfor %}
   </div>
+  <section class="gcarousel">
+    <div class="carousel__container">
+      {% for gallery in gallery2%}
+      <div class="gcarousel-item">
+        <img class="carousel-item__img" src="{{gallery.Gallery_img}}" alt="" />
+        <div class="carousel-item__details">
+          <h5 class="carousel-item__details--title">{{gallery.G_place}}</h5>
+          <a href="/gallery/{{gallery.G_place}}" class="link-opacity-50-hover">View More</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
   <a href="/gallery" class="buttn"
-    style="display: flex; width: 70%; margin:auto; justify-content: center; margin-bottom: 10px;">VIEW MORE</a>
+    style="display: flex; width: 70%; margin:auto; justify-content: center; margin-bottom: 10px; margin: 20px;">VIEW MORE</a>
 </div>
 
 <!-- Packages -->

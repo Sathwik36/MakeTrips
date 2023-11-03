@@ -57,6 +57,12 @@ class Gallery(models.Model):
     Gallery_place_desc=models.TextField(null=True)
     def __str__(self):
         return self.Gallery_place
+
+class Gallery_2(models.Model):
+    G_place=models.CharField(max_length=50)
+    Gallery_img=models.CharField(max_length=150)
+    def __str__(self):
+        return self.G_place
     
 class TravellerDetail(models.Model):
     username=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)

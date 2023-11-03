@@ -60,7 +60,7 @@ def register(request):
     return redirect('/')
 
 def home(request):
-    return render(request,'home.html', {'querys':Myreviews.objects.all() , 'galleries':Gallery.objects.all()})
+    return render(request,'home.html', {'querys':Myreviews.objects.all() , 'galleries':Gallery.objects.all(),"gallery2":Gallery_2.objects.all()})
 
 def gallerytemp(request):
     return render(request,'gallery.html')
@@ -74,11 +74,8 @@ def view_more_gallery(request):
     if request.method=="POST":
         query=request.POST.get('search_gallery')
         data=Search_image(query)
-        if response.status_code==200:
-            image_data = [ images["urls"]["regular"] for images in data["results"]]
-            return render(request,'gallery.html',{'images':image_data})
-        else:
-            return HttpResponse("ERROR ... Unable to load")
+        image_data = [ images["urls"]["regular"] for images in data["results"]]
+        return render(request,'gallery.html',{'images':image_data})
 
 def search(request):
     if request.method=="POST":

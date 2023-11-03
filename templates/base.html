@@ -178,12 +178,15 @@
       display: flex;
       justify-content: center;
     }
-    .threecon{
+
+    /* Gallery  */
+    .threecon {
       display: grid;
       grid-template-columns: auto auto auto;
-      gap: 2rem;
+      gap: 4rem;
       margin-bottom: 20px;
     }
+
     .gcard {
       height: 350px;
       perspective: 1000px;
@@ -241,6 +244,102 @@
       justify-content: center;
       background-color: transparent;
       color: white;
+    }
+
+    .gcarousel {
+      width: 100%;
+      overflow-x: scroll;
+      padding: 30px;
+      position: relative;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .carousel__container {
+      white-space: nowrap;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .categories__title {
+      color: rgb(77, 55, 102);
+      font-size: 28px;
+      position: absolute;
+      padding-left: 30px;
+    }
+
+    .gcarousel-item {
+      width: 200px;
+      height: 250px;
+      border-radius: 20px;
+      background-color: #95bcd6;
+      overflow: hidden;
+      margin-right: 10px;
+      margin-top: 70px;
+      display: inline-block;
+      cursor: pointer;
+      -webkit-transition: 1000ms all;
+      transition: 1000ms all;
+      -webkit-transform-origin: center left;
+      transform-origin: center left;
+      position: relative;
+    }
+
+    .gcarousel-item:hover~.gcarousel-item {
+      -webkit-transform: translate3d(100px, 0, 0);
+      transform: translate3d(100px, 0, 0);
+    }
+
+    .carousel__container:hover .gcarousel-item {
+      opacity: 0.3;
+    }
+
+    .carousel__container:hover .gcarousel-item:hover {
+      -webkit-transform: scale(1.5);
+      transform: scale(1.5);
+      opacity: 1;
+    }
+
+    .carousel-item__img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .carousel-item__details {
+      background: -webkit-gradient(linear,
+          left bottom,
+          left top,
+          from(rgba(0, 0, 0, 0.9)),
+          to(rgba(0, 0, 0, 0)));
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0) 100%);
+      font-size: 10px;
+      opacity: 0;
+      -webkit-transition: 450ms opacity;
+      transition: 450ms opacity;
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .carousel-item__details:hover {
+      opacity: 1;
+    }
+
+    .carousel-item__details .controls {
+      padding-top: 180px;
+    }
+
+    .carousel-item__details .carousel-item__details--title,
+    .carousel-item__details--subtitle {
+      color: #fff;
+      margin: 5px 0;
     }
 
     /* api gallery */
@@ -735,7 +834,8 @@
         font-size: 60px;
       }
 
-      .rcon,.threecon,
+      .rcon,
+      .threecon,
       .fourcont {
         grid-template-columns: auto auto;
       }
@@ -806,7 +906,8 @@
         flex-direction: column;
       }
 
-      .rcon,.threecon,
+      .rcon,
+      .threecon,
       .fourcont {
         grid-template-columns: auto;
       }

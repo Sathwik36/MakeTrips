@@ -7,7 +7,7 @@ def Search_image(getd):
     params={
             'client_id':access_key,
             'query':query,
-            'per_page':12
+            'per_page':20
         }
     response=requests.get(endpoint,params=params)
     data=response.json()
