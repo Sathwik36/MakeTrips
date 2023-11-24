@@ -5,13 +5,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse,JsonResponse
 from maketripsapp.models import *
-from .apifunc import Search_image
 from django.db.models import Q
 from datetime import datetime
-import random
-from django.conf import settings
+import random,requests
 
 # Create your views here.
+def Search_image(getd):
+    query=getd
+    access_key='xwCedsYHmw2pBvquaTqkGwou1VqJ_gCJFkqHoG6zYSc'
+    endpoint=f"https://api.unsplash.com/search/photos"
+    params={
+            'client_id':access_key,
+            'query':query,
+            'per_page':20
+        }
+    response=requests.get(endpoint,params=params)
+    data=response.json()
+    return data
+
 def Login(request):
     return render(request,'login.html')
 
@@ -60,7 +71,20 @@ def register(request):
     return redirect('/')
 
 def home(request):
-    return render(request,'home.html', {'querys':Myreviews.objects.all() , 'galleries':Gallery.objects.all(),"gallery2":Gallery_2.objects.all()})
+    vacation=vacations.objects.all()
+    lenv=len(vacation)
+    g1,g2,g3,g4=zip(*[iter(vacation)]*3)
+    context={
+        'querys':Myreviews.objects.all() ,
+         'galleries':Gallery.objects.all(),
+         "gallery2":Gallery_2.objects.all(),
+         'vacation':vacation,
+         'g1':g1,
+         'g2':g2,
+         'g3':g3,
+         'g4':g4
+         }
+    return render(request,'home.html', context)
 
 def gallerytemp(request):
     return render(request,'gallery.html')

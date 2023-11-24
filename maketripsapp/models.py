@@ -80,7 +80,13 @@ class TravellerDetail(models.Model):
     special_req=models.TextField()
     def __str__(self):
         return self.T_FirstName
-    
+
+class vacations(models.Model):
+    v_place=models.CharField(max_length=70)
+    v_desc=models.TextField()
+    img_link=models.CharField(max_length=150)
+    def __str__(self):
+        return self.v_place   
 
 
 
