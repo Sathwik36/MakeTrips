@@ -76,7 +76,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6">
-        <h3 class="mb-3" style="font-family: serif;text-decoration: underline;">PLACES RECOMMENDED FOR YOU </h3>
+        <h3 class="mb-3" style="font-family: serif;text-decoration: underline;"><b>PLACES RECOMMENDED FOR YOU </b> </h3>
       </div>
       <div class="col-6 text-right">
         <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -99,8 +99,8 @@
                       <h4 class="card-title">{{g.v_place}}</h4>
                       <p class="card-text">{{g.v_desc}}</p>
                       <div style="display: flex;justify-content: space-around;">
-                        <a href="" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="" class="btn btn-outline-info">Read More</a>
+                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
                       </div>
                     </div>
                   </div>
@@ -118,8 +118,8 @@
                       <h4 class="card-title">{{g.v_place}}</h4>
                       <p class="card-text">{{g.v_desc}}</p>
                       <div style="display: flex;justify-content: space-around;">
-                        <a href="" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="" class="btn btn-outline-info">Read More</a>
+                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
                       </div>
                     </div>
                   </div>
@@ -137,8 +137,8 @@
                       <h4 class="card-title">{{g.v_place}}</h4>
                       <p class="card-text">{{g.v_desc}}</p>
                       <div style="display: flex;justify-content: space-around;">
-                        <a href="" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="" class="btn btn-outline-info">Read More</a>
+                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
                       </div>
                     </div>
                   </div>
@@ -156,8 +156,8 @@
                       <h4 class="card-title">{{g.v_place}}</h4>
                       <p class="card-text">{{g.v_desc}}</p>
                       <div style="display: flex;justify-content: space-around;">
-                        <a href="" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="" class="btn btn-outline-info">Read More</a>
+                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
                       </div>
                     </div>
                   </div>
@@ -223,7 +223,7 @@
     </div>
     {% endfor %}
   </div>
-  <!-- <section class="gcarousel">
+  <section class="gcarousel">
     <div class="carousel__container">
       {% for gallery in gallery2%}
       <div class="gcarousel-item">
@@ -235,7 +235,7 @@
       </div>
       {% endfor %}
     </div>
-  </section> -->
+  </section>
   <a href="/gallery" class="buttn"
     style="display: flex; width: 70%; margin:auto; justify-content: center; margin-bottom: 10px;">VIEW MORE</a>
 </div>
@@ -607,6 +607,5 @@
   </div>
 
 </section>
-
 
 {% endblock body %}

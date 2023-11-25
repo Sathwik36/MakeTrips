@@ -173,3 +173,6 @@ def book(request,HotelName):
         travelinfo.save()
         booking_info=TravellerDetail.objects.filter(T_contactNo=phone)
     return render(request,'book.html',{'booking_info':booking_info})
+
+def places(request,place):
+    return render(request,'places.html',{'p':place})

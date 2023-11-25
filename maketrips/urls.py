@@ -35,8 +35,8 @@ urlpatterns = [
     path('bookhotel',include('maketripsapp.urls')),
     path('hotel',include('maketripsapp.urls')),
     path('book',include('maketripsapp.urls')),
-    path('view_more_gallery',include('maketripsapp.urls'))
-
+    path('view_more_gallery',include('maketripsapp.urls')),
+    path('places',include('maketripsapp.urls'))
 
 ]
 

@@ -16,5 +16,6 @@ urlpatterns = [
     path('hotel/<int:hid>',views.hotel,name="hotel"),
     path('book/<HotelName>',views.book,name="book"),
     path('gallery/<galleryplace>',views.gallery,name="gallery"),
+    path('places/<place>',views.places,name="places"),
     path('view_more_gallery',views.view_more_gallery,name="view_more_gallery")
 ]
