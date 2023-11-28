@@ -20,8 +20,8 @@
                 <span><b>₹</b>{{h.hotel_price}} /-</span>
             </div>
             <hr>
-            <p>{{h.hotel_desc}}</p>
-            <a class="btn btn-success" style="border-radius: 2rem;display: flex; justify-content: center; "
+            {% comment %} <p>{{h.hotel_desc}}</p> {% endcomment %}
+            <a class="btn btn-outline-success" style="border-radius: 2rem;display: flex; justify-content: center; "
                 href="/hotel/{{h.id}}">BOOK NOW</a>
         </div>
     </div>

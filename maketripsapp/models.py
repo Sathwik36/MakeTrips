@@ -4,7 +4,7 @@ from datetime import datetime
 # Create your models here.
 
 class Feedback(models.Model):
-
+    username=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     name=models.CharField( max_length=50)
     phone=models.CharField( max_length=10)
     email=models.CharField( max_length=50)
@@ -88,6 +88,24 @@ class vacations(models.Model):
     def __str__(self):
         return self.v_place   
 
+class package(models.Model):
+    p_title=models.CharField(max_length=70)
+    p_cname=models.CharField(max_length=70)
+    p_img=models.CharField( max_length=150)
+    No_D=models.IntegerField()
+    No_N=models.IntegerField()
+    No_F=models.IntegerField()
+    No_H=models.IntegerField()
+    p_price=models.IntegerField()
+    Offer_type=models.CharField(max_length=50)
+    p_item1=models.CharField(max_length=50)
+    p_item2=models.CharField(max_length=50)
+    p_item3=models.CharField(max_length=50)
+    p_item4=models.CharField(max_length=50)
+    p_item5=models.CharField(max_length=50,null=True)
+    def __str__(self):
+            return self.p_cname
+    
 
 
 # class trip(models.Model):

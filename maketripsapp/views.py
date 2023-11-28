@@ -78,6 +78,7 @@ def home(request):
         'querys':Myreviews.objects.all() ,
          'galleries':Gallery.objects.all(),
          "gallery2":Gallery_2.objects.all(),
+         'packages':package.objects.all(),
          'vacation':vacation,
          'g1':g1,
          'g2':g2,
@@ -92,14 +93,14 @@ def gallerytemp(request):
 def gallery(request,galleryplace):
     data=Search_image(galleryplace)
     image_data = [ images["urls"]["regular"] for images in data["results"]]
-    return render(request,'gallery.html',{'images':image_data})
+    return render(request,'gallery.html',{'images':image_data,'place':galleryplace})
 
 def view_more_gallery(request):
     if request.method=="POST":
         query=request.POST.get('search_gallery')
         data=Search_image(query)
         image_data = [ images["urls"]["regular"] for images in data["results"]]
-        return render(request,'gallery.html',{'images':image_data})
+        return render(request,'gallery.html',{'images':image_data,'place':query})
 
 def search(request):
     if request.method=="POST":
@@ -111,6 +112,9 @@ def search(request):
             data=Search_image(searchedb)
             image_data = [ images["urls"]["regular"] for images in data["results"]]
             return render(request,'search_temp.html',{'images':image_data,'placename':searchedb})
+
+def package_temp(request):
+    return HttpResponse("packages")
     
 def addreview(request):
     if request.method=="POST":

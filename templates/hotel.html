@@ -114,7 +114,7 @@
     <div id="infoform">
         <div style="display: flex;justify-content: space-between;">
             <h2>Traveller Details:</h2>
-            <i class="fa-solid fa-xmark fa-2xl" style="color: #000000;align-self: center; " onclick="closeform()"></i>
+            <button type="button" class="btn-close" onclick="closeform()" aria-label="Close"></button>
         </div>
         <hr>
         <form action="/book/{{h.hotel_name}}" method="POST">

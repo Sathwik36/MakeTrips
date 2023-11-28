@@ -72,106 +72,101 @@
   </div>
 </div>
 
-<section class="pt-5 pb-5 second">
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <h3 class="mb-3" style="font-family: serif;text-decoration: underline;"><b>PLACES RECOMMENDED FOR YOU </b> </h3>
-      </div>
-      <div class="col-6 text-right">
-        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-          <i class="fa fa-arrow-left"></i>
-        </a>
-        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-          <i class="fa fa-arrow-right"></i>
-        </a>
-      </div>
-      <div class="col-12">
-        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row">
-                {% for g in g1 %}
-                <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
-                    <div class="card-body">
-                      <h4 class="card-title">{{g.v_place}}</h4>
-                      <p class="card-text">{{g.v_desc}}</p>
-                      <div style="display: flex;justify-content: space-around;">
-                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
-                      </div>
-                    </div>
-                  </div>
+<div style="display: flex; justify-content: space-between;margin: 20px;padding: 0 50px;">
+  <h1 class="mb-0" style="font-family: serif;text-decoration: underline;"><b>Explore the Unexplored </b>
+  </h1>
+  <div>
+    <button class="btn btn-primary" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <i class="fa fa-arrow-left fa-xl"></i>
+    </button>
+    <button class="btn btn-primary" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <i class="fa fa-arrow-right fa-xl"></i>
+    </button>
+  </div>
+</div>
+<div class="container">
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="4000">
+        <div class="row">
+          {% for g in g1 %}
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
+              <div class="card-body">
+                <h4 class="card-title">{{g.v_place}}</h4>
+                <p class="card-text">{{g.v_desc}}</p>
+                <div style="display: flex;justify-content: space-around;">
+                  <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                  <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
                 </div>
-                {% endfor %}
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row">
-                {% for g in g2 %}
-                <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
-                    <div class="card-body">
-                      <h4 class="card-title">{{g.v_place}}</h4>
-                      <p class="card-text">{{g.v_desc}}</p>
-                      <div style="display: flex;justify-content: space-around;">
-                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row">
-                {% for g in g3 %}
-                <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
-                    <div class="card-body">
-                      <h4 class="card-title">{{g.v_place}}</h4>
-                      <p class="card-text">{{g.v_desc}}</p>
-                      <div style="display: flex;justify-content: space-around;">
-                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row">
-                {% for g in g4 %}
-                <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
-                    <div class="card-body">
-                      <h4 class="card-title">{{g.v_place}}</h4>
-                      <p class="card-text">{{g.v_desc}}</p>
-                      <div style="display: flex;justify-content: space-around;">
-                        <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
-                        <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
               </div>
             </div>
           </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="4000">
+        <div class="row">
+          {% for g in g2 %}
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
+              <div class="card-body">
+                <h4 class="card-title">{{g.v_place}}</h4>
+                <p class="card-text">{{g.v_desc}}</p>
+                <div style="display: flex;justify-content: space-around;">
+                  <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                  <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="carousel-item " data-bs-interval="4000">
+        <div class="row">
+          {% for g in g3 %}
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
+              <div class="card-body">
+                <h4 class="card-title">{{g.v_place}}</h4>
+                <p class="card-text">{{g.v_desc}}</p>
+                <div style="display: flex;justify-content: space-around;">
+                  <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                  <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="carousel-item " data-bs-interval="4000">
+        <div class="row">
+          {% for g in g4 %}
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <img class="img-fluid" alt="100%x280" src="{{g.img_link}}">
+              <div class="card-body">
+                <h4 class="card-title">{{g.v_place}}</h4>
+                <p class="card-text">{{g.v_desc}}</p>
+                <div style="display: flex;justify-content: space-around;">
+                  <a href="/gallery/{{g.v_place}}" class="btn btn-outline-primary">View Gallery</a>
+                  <a href="/places/{{g.v_place}}" class="btn btn-outline-info">Read More</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
-  </div>
-</section>
 
+  </div>
+</div>
 <!-- Book -->
 <div id="book" class="container-fluid">
   <p class="heading">BOOK NOW</p>
@@ -210,15 +205,13 @@
   <div class="threecon ">
     {% for gallery in galleries%}
     <div class="gcard">
-      <div class="gcard-inner">
-        <div class="gcard-front">
-          <img src="{{gallery.Gallery_img}}" alt="">
-        </div>
-        <div class="gcard-back">
-          <h3>{{gallery.Gallery_place}}</h3>
-          <p>{{gallery.Gallery_place_desc}} </p>
-          <a href="/gallery/{{gallery.Gallery_place}}" class="buttn">SEE MORE</a>
-        </div>
+      <div class="gcard-front">
+        <img src="{{gallery.Gallery_img}}" alt="">
+      </div>
+      <div class="gcard-back">
+        <h3>{{gallery.Gallery_place}}</h3>
+        <p>{{gallery.Gallery_place_desc}} </p>
+        <a href="/gallery/{{gallery.Gallery_place}}" class="buttn">SEE MORE</a>
       </div>
     </div>
     {% endfor %}
@@ -243,148 +236,50 @@
 <!-- Packages -->
 <div id="packages" class="container-fluid">
   <p class="heading">PACKAGES</p>
-  <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+  <div class="threecon">
+    {% for p in packages %}
     <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/indiap.jpg" alt="">
-        <h3>INDIA</h3>
-        <p>This package includes all tourist places in India,with accommodations.</p>
+      <img src="{{p.p_img}}" alt="">
+      <div class="pcard-inner">
         <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+          <h3
+            style="margin: 0;padding: 0; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+            {{p.p_title}}</h3>
+          {{p.No_N}}N {{p.p_cname|capfirst}}
         </div>
-        <b>₹ 3,49,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
+        <div><span class="badge rounded-pill text-bg-secondary">{{p.No_N}}N/{{p.No_D}}D</span></div>
       </div>
-    </div>
-    <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/paris.jpg" alt="">
-        <h3>PARIS</h3>
-        <p>Experience the romance of Paris with our 5-day package.</p>
+      <hr>
+      <div style="display: flex; justify-content: space-evenly;margin-bottom: 5px;">
+        <div><i class="fa-solid fa-plane"></i>{{p.No_F}} Flights</div>
+        <div><i class="fa-solid fa-hotel"></i>{{p.No_H}} Hotels</div>
+        <div><i class="fa-solid fa-car"></i>Transport</div>
+      </div>
+      <hr>
+      <ul>
+        <li>{{p.p_item1}}</li>
+        <li>{{p.p_item2}}</li>
+        <li>{{p.p_item3}}</li>
+        <li>{{p.p_item4}}</li>
+        <li>{{p.p_item5}}</li>
+      </ul>
+      <div class="pcard-bottom">
+        <p style="margin-bottom: 0;">{{p.Offer_type}}</p>
         <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+          <b>₹{{p.p_price}}</b>/Person
         </div>
-        <b>₹ 1,49,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
       </div>
+      <a href="/packages" class="btn btn-outline-success"
+        style="border-radius: 10px;display: flex;justify-content: center;margin-top: 10px;">View Details</a>
     </div>
-    <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/icelandsp.jpg" alt="">
-        <h3>ICELANDS</h3>
-        <p>Explore Iceland's stunning landscapes with our 7-day package.</p>
-        <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <b>₹ 2,09,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
-      </div>
-    </div>
-    <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/indiap.jpg" alt="">
-        <h3>NEW ZEALANDS</h3>
-        <p>Discover New Zealand's natural beauty with our 10-day package.</p>
-        <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <b>₹ 1,89,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
-      </div>
-    </div>
-
-  </div>
-  <div class="containid" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
-    <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/dubai.jpg" alt="">
-        <h3>DUBAI</h3>
-        <p>Experience the luxury and modernity of Dubai with our 3-day package, including a desert safari.</p>
-        <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <b>₹ 2,99,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
-      </div>
-    </div>
-    <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/switzerland.jpg" alt="">
-        <h3>SWITZERLAND</h3>
-        <p>Discover the beauty of Switzerland with our 7-day package, including a scenic train ride. Book this now
-        </p>
-        <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <b>₹ 2,49,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
-      </div>
-    </div>
-    <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/london.jpg" alt="">
-        <h3>LONDON</h3>
-        <p>Experience the best views of London with our 5-day package, including a tour of Buckingham Palace.</p>
-        <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <b>₹ 1,89,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
-      </div>
-    </div>
-    <div class="pcard">
-      <div class="pcardin">
-        <img src="/static/indiap.jpg" alt="">
-        <h3>NEW YORK CITY</h3>
-        <p>Experience the excitement of NYC with our 4-day package, including a visit to the Empire State Building.
-        </p>
-        <div>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <b>₹ 2,29,999.00/-</b>
-        <a href="" class="buttn">Book Now</a>
-      </div>
-    </div>
-
+    {% endfor %}
   </div>
 </div>
 
 <!-- Reviews -->
 <div id="reviews" class="container-fluid">
   <p class="heading">REVIEWS</p>
-  <div class="rcontainer">
+  <div class="threecon">
     <div class="rbox">
       <div class="rimg">
         <img src="/static/klaus.jpg" alt="">
@@ -429,8 +324,6 @@
         <p>The hotel was disappointing. The room was small and outdated, and the staff was unhelpful.</p>
       </div>
     </div>
-  </div>
-  <div class="rcontainer">
     <div class="rbox">
       <div class="rimg">
         <img src="/static/rebekah.jpg" alt="">
@@ -461,7 +354,6 @@
           frustrating experience.</p>
       </div>
     </div>
-
     <div class="rbox">
       <div class="rimg">
         <img src="/static/hayley.jpg" alt="">
@@ -477,30 +369,36 @@
           I would do it again in a heartbeat.</p>
       </div>
     </div>
-
   </div>
-  <button id="butn" class="buttn" onclick="reviews()">View More</button>
   <!-- display review  -->
-  <div class="rcon mb-20" id="morereviews">
-    {% for x in querys %}
-    <div class="item">
-      <div class="rhead">
-        <img src="/static/user.png" alt="">
-        <h2> {{x.username|capfirst}}</h2>
+  <div class="collapse" id="collapseExample">
+    <div class="threecon">
+      {% for x in querys %}
+      <div class="item">
+        <div class="rhead">
+          <img src="/static/user.png" alt="">
+          <h2> {{x.username|capfirst}}</h2>
+        </div>
+        <div class="rbody">
+          <h4>{{x.review_place|capfirst}}</h4>
+          <!-- stars -->
+          <h4 style="display: inline;">Rating: </h4><b>{{x.rating_no}}/5</b>
+          {% comment %} {% for i in %}
+          <i class="fa-solid fa-star"></i>
+          {% endfor %} {% endcomment %}
+          <p>{{ x.review_desc }}</p>
+        </div>
       </div>
-      <div class="rbody">
-        <h4>{{x.review_place|capfirst}}</h4>
-        <!-- stars -->
-        <h4 style="display: inline;">Rating: </h4><b>{{x.rating_no}}/5</b>
-        {% comment %} {% for i in %}
-        <i class="fa-solid fa-star"></i>
-        {% endfor %} {% endcomment %}
-        <p>{{ x.review_desc }}</p>
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-  <!-- Add review -->
+  <p style="display: flex;justify-content: space-evenly;">
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+      aria-controls="collapseExample">View More</a>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+      aria-expanded="false" aria-controls="collapseExample">View Less</button>
+  </p>
+  <!-- add review -->
   <div class="addreview">
     {% if user.is_authenticated %}
     <form name="rform" onsubmit="return validateForm()" action="/addreview" method="POST">
@@ -518,11 +416,10 @@
           id="floatingTextarea"></textarea>
         <label for="floatingTextarea">Add your review</label>
       </div>
-
-      <input type="submit" class="btn btn-primary" value="Add Review">
+      <button type="submit" class="btn btn-outline-success">Add Review</button>
     </form>
     {% else %}
-    <h3>You are not logged in please login to submit review</h3>
+    <h3>You are not logged in please login to add review</h3>
     <a href="/Login" class="btn btn-primary">Click here to Login</a>
     {% endif %}
   </div>
