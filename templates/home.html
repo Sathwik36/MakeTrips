@@ -71,7 +71,6 @@
     </button>
   </div>
 </div>
-
 <div style="display: flex; justify-content: space-between;margin: 20px;padding: 0 50px;">
   <h1 class="mb-0" style="font-family: serif;text-decoration: underline;"><b>Explore the Unexplored </b>
   </h1>
@@ -167,6 +166,7 @@
 
   </div>
 </div>
+
 <!-- Book -->
 <div id="book" class="container-fluid">
   <p class="heading">BOOK NOW</p>
@@ -426,7 +426,7 @@
 </div>
 
 <!-- Blog -->
-<section>
+<section class="blog">
   <p class="heading">BLOG</p>
   <div class="blog1">
     <div class="desc">
@@ -436,73 +436,30 @@
       <p style="text-align: end;">-MadMax </p>
     </div>
   </div>
-  <div class="blog3">
+  <div class="threecon">
+    {% for b in blogs %}
     <div class="card">
       <div class="card__header">
         <img
-          src="https://images.unsplash.com/photo-1626220611368-ad0a6bbd04ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjI4ODB8MHwxfHNlYXJjaHw3fHxDb2xvc3NldW18ZW58MHx8fHwxNjk5MjYwMjUzfDA&ixlib=rb-4.0.3&q=80&w=1080"
+          src="{{b.b_img}}"
           alt="card__image" class="card__image" width="600">
       </div>
       <div class="card__body">
-        <h4>Colosseum</h4>
-        <p>The Colosseum is an elliptical amphitheatre in the centre of the city of Rome, Italy, just east of the
-          Roman Forum. It is the largest ancient amphitheatre ever built, and is still the largest standing
-          amphitheatre in the world, despite its age.</p>
+        <h4>{{b.b_place}}</h4>
+        <p>{{b.b_desc}}</p>
       </div>
       <div class="card__footer">
         <div class="user">
           <div class="user__info">
-            <h5>Elena</h5>
-            <small>2h ago</small>
+            <h5>{{b.blogger}}</h5>
           </div>
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card__header">
-        <img
-          src="https://images.unsplash.com/photo-1528161498624-89b0174b714d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjI4ODB8MHwxfHNlYXJjaHwyfHxVeXVuaSUyMFNhbHQlMjBGbGF0fGVufDB8fHx8MTY5OTI2MDA4Nnww&ixlib=rb-4.0.3&q=80&w=1080"
-          alt="card__image" class="card__image" width="600">
-      </div>
-      <div class="card__body">
-        <h4>Uyuni Salt Flat</h4>
-        <p>Salar de Uyuni, amid the Andes in southwest Bolivia, is the world’s largest salt flat. It’s the legacy of a
-          prehistoric lake that went dry, leaving behind a desertlike, nearly 11,000-sq.-km. landscape of bright-white
-          salt, rock formations and cacti-studded islands. Its otherworldly expanse can be observed from central
-          Incahuasi Island. </p>
-      </div>
-      <div class="card__footer">
-        <div class="user">
-          <div class="user__info">
-            <h5>Bonnie</h5>
-            <small>3 days ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card__header">
-        <img
-          src="https://images.unsplash.com/photo-1589312133722-eab40c686ebb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MjI4ODB8MHwxfHNlYXJjaHwxfHxQbGl0dmljZSUyMExha2VzJTIwTmF0aW9uYWwlMjBQYXJrfGVufDB8fHx8MTY5OTI2MDE4OHww&ixlib=rb-4.0.3&q=80&w=1080"
-          alt="card__image" class="card__image" width="600">
-      </div>
-      <div class="card__body">
-        <h4>Plitvice Lakes National Park</h4>
-        <p>Plitviče Lakes National Park is a 295-sq.-km forest reserve in central Croatia. It's known for a chain of
-          16 terraced lakes, joined by waterfalls, that extend into a limestone canyon. Walkways and hiking trails
-          wind around and across the water, and an electric boat links the 12 upper and 4 lower lakes. </p>
-      </div>
-      <div class="card__footer">
-        <div class="user">
-          <div class="user__info">
-            <h5>Elijah</h5>
-            <small>1 week ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
-
+<!-- add blog  -->
+<a href="/packages" class="btn btn-primary">Add Blog</a>
 </section>
 
 {% endblock body %}

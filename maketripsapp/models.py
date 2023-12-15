@@ -106,7 +106,14 @@ class package(models.Model):
     def __str__(self):
             return self.p_cname
     
-
+class Blog(models.Model):
+    b_place=models.CharField( max_length=50)
+    b_desc=models.TextField()
+    b_img=models.CharField( max_length=150)
+    blogger=models.CharField( max_length=50)
+    def __str__(self):
+        return self.blogger
+    
 
 # class trip(models.Model):
 #     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)

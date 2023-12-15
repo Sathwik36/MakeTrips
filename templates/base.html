@@ -482,7 +482,7 @@
       background-color: rgb(237, 237, 237);
       border-radius: 10px;
     }
-
+    .threecon .card:hover,
     .pcard:hover,
     .rbox:hover,
     .item:hover,
@@ -565,7 +565,7 @@
       box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
       padding: 10px;
     }
-
+/* footer */
     footer {
       margin-top: 20px;
       background: black;
@@ -620,7 +620,7 @@
       filter: drop-shadow(0px 0px 5px red);
       transform: scale(1.25);
     }
-
+/* blog section  */
     .blog1 {
       background: url(/static/blog1.jpg);
       background-size: cover;
@@ -641,26 +641,24 @@
 
     }
 
-    .blog3 {
-      display: flex;
-      flex-wrap: wrap;
+    .blog .threecon {
       justify-content: space-evenly;
       margin-block: 2rem;
       gap: 2rem;
       margin-bottom: 50px;
     }
 
-    .blog3 img {
-      max-width: 100%;
-      display: block;
-      object-fit: cover;
+    .blog .threecon img {
+      width: 100%;
+      height: 250px;
     }
 
-    .blog3 .card {
+    .blog .card {
       display: flex;
       flex-direction: column;
       width: clamp(20rem, calc(20rem + 2vw), 22rem);
       overflow: hidden;
+      width: 380px;
       box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
       border-radius: 1em;
       background: #ECE9E6;
@@ -691,10 +689,6 @@
       gap: .5rem;
     }
 
-    .user__image {
-      border-radius: 50%;
-    }
-
     .user__info>small {
       color: #666;
     }
@@ -702,13 +696,12 @@
     ::after {
       color: black;
     }
-
+    /* hotel page */
     .hotelcont {
       display: flex;
       justify-content: space-evenly;
       padding: 20px;
     }
-
     .hotelcont .boxdesc {
       width: 20%;
       box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
@@ -764,7 +757,7 @@
       width: 100%;
       height: 100%;
     }
-
+/* search page */
     .simgcont {
       display: grid;
       grid-template-columns: 45% 45%;
@@ -805,7 +798,6 @@
         font-size: 60px;
       }
 
-      .threecon,
       .fourcont {
         grid-template-columns: auto auto;
       }
@@ -867,7 +859,6 @@
         width: 100%;
       }
 
-      .threecon,
       .fourcont {
         grid-template-columns: auto;
       }
@@ -878,22 +869,6 @@
 
       .blog1 .desc {
         left: 2.5%;
-      }
-
-      .blog2cont {
-        flex-direction: column;
-      }
-
-      .blog2 {
-        width: 100%;
-      }
-
-      .blog2 .b2desc {
-        width: 40%;
-      }
-
-      .blog2 .b2desc:nth-child(2) {
-        left: 8%;
       }
 
       .hotelcont {

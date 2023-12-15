@@ -79,6 +79,7 @@ def home(request):
          'galleries':Gallery.objects.all(),
          "gallery2":Gallery_2.objects.all(),
          'packages':package.objects.all(),
+         'blogs':Blog.objects.all(),
          'vacation':vacation,
          'g1':g1,
          'g2':g2,
@@ -113,6 +114,7 @@ def search(request):
             image_data = [ images["urls"]["regular"] for images in data["results"]]
             return render(request,'search_temp.html',{'images':image_data,'placename':searchedb})
 
+@login_required(login_url='Login')
 def package_temp(request):
     return HttpResponse("packages")
     
