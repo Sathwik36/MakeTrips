@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> {% block title%} {% endblock title%} | MakeTrips</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz@1,6..12&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/b07db3e689.js" crossorigin="anonymous"></script>
+
+  <style>
+    #travellerdetails {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(1px);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    #infoform {
+      position: absolute;
+      top: 10%;
+      left: 15%;
+      background: white;
+      width: 70%;
+      margin: auto;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    #infoform form {
+      display: grid;
+      grid-template-columns: 45% 45%;
+      justify-content: space-around;
+    }
+
+    #home {
+      padding-top: -50px;
+    }
+
+    #book {
+      padding-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    #gallery {
+      padding-top: 30px;
+    }
+
+    #packages {
+      padding-top: 30px;
+    }
+
+    #reviews {
+      padding-top: 30px;
+
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      position: sticky;
+      background: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+
+    }
+
+    .nav-link {
+      font-size: large;
+      color: black;
+    }
+
+    .nav-link:hover {
+      color: orangered;
+      font-size: var(--bs-nav-link-font-size);
+      font-weight: var(--bs-nav-link-font-weight);
+    }
+
+    #home .carousel-caption h1 {
+      font-family: serif;
+      font-size: 100px;
+    }
+
+    #home .carousel-item img {
+      height: 41em;
+    }
+
+    #home .carousel-item p {
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #home .carousel-item:nth-child(1) p {
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .img-fluid {
+      max-width: 100%;
+      height: 325px;
+    }
+
+    .container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .container .forimg,
+    .forform {
+      width: 45%;
+    }
+
+    .forimg img {
+      width: 100%;
+    }
+
+    .buttn {
+      width: 100%;
+      margin-top: 10px;
+      text-decoration: none;
+      border: 3px solid #1716c3d4;
+      background: white;
+      border-radius: 10px;
+      padding: 4px;
+
+    }
+
+    .buttn:hover {
+      transition: .5s;
+      border: 3px solid transparent;
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+      color: white;
+      transform: scale(1.0);
+
+    }
+
+    .heading {
+      background: url(/static/background.jpg) center center/cover no-repeat;
+      color: #de466c;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font: normal 800 100px Fira Code, Sans-serif;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Gallery  */
+    .threecon {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .gcard {
+      margin: 40px;
+      position: relative;
+      width: 350px;
+      height: 350px;
+      box-shadow: 0 32px 60px -15px black;
+      border-radius: 10px;
+    }
+
+    .gcard:hover .gcard-back {
+      opacity: 0.9;
+      height: 100%;
+    }
+
+    .gcard-front {
+      width: 100%;
+      height: 100%;
+
+    }
+
+    .gcard-front img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    .gcard-back {
+      display: block;
+      font-size: 1.2rem;
+      position: absolute;
+      height: 0;
+      top: 0;
+      opacity: 0;
+      padding: 18px 8%;
+      background-color: white;
+      overflow-y: scroll;
+      transition: 0.8s ease;
+      border-radius: 10px;
+    }
+
+    .gcard-back .buttn {
+      display: flex;
+      justify-content: center;
+      background-color: transparent;
+    }
+
+    .gcarousel {
+      width: 100%;
+      overflow-x: scroll;
+      padding: 30px;
+      position: relative;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .carousel__container {
+      white-space: nowrap;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .categories__title {
+      color: rgb(77, 55, 102);
+      font-size: 28px;
+      position: absolute;
+      padding-left: 30px;
+    }
+
+    .gcarousel-item {
+      width: 200px;
+      height: 250px;
+      border-radius: 20px;
+      background-color: #95bcd6;
+      overflow: hidden;
+      margin-right: 10px;
+      margin-top: 70px;
+      display: inline-block;
+      cursor: pointer;
+      -webkit-transition: 1000ms all;
+      transition: 700ms all;
+      -webkit-transform-origin: center left;
+      transform-origin: center left;
+      position: relative;
+    }
+
+    .gcarousel-item:hover~.gcarousel-item {
+      -webkit-transform: translate3d(100px, 0, 0);
+      transform: translate3d(100px, 0, 0);
+    }
+
+    .carousel__container:hover .gcarousel-item:hover {
+      -webkit-transform: scale(1.5);
+      transform: scale(1.5);
+      opacity: 1;
+    }
+
+    .carousel-item__img {
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .carousel-item__details {
+      background: -webkit-gradient(linear,
+          left bottom,
+          left top,
+          from(rgba(0, 0, 0, 0.9)),
+          to(rgba(0, 0, 0, 0)));
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0) 100%);
+      font-size: 10px;
+      opacity: 0;
+      -webkit-transition: 450ms opacity;
+      transition: 450ms opacity;
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .carousel-item__details:hover {
+      opacity: 1;
+    }
+
+    .carousel-item__details .controls {
+      padding-top: 180px;
+    }
+
+    .carousel-item__details .carousel-item__details--title,
+    .carousel-item__details--subtitle {
+      color: #fff;
+      margin: 5px 0;
+    }
+
+    /* api gallery */
+    .gitem {
+      width: 100%;
+      height: 350px;
+    }
+
+    .gitem img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      padding: 10px;
+    }
+
+    .search_gallery {
+      width: 90%;
+      margin: auto;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      padding: 5px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .form__group {
+      position: relative;
+      padding: 20px 0 0;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .search_gallery .buttn {
+      width: 40%;
+      display: flex;
+      margin: auto;
+      justify-content: center;
+    }
+
+    .form__field {
+      font-family: inherit;
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #9b9b9b;
+      outline: 0;
+      font-size: 17px;
+      color: #fff;
+      padding: 7px 0;
+      background: transparent;
+      transition: border-color 0.2s;
+    }
+
+    .form__field::placeholder {
+      color: transparent;
+    }
+
+    .form__field:placeholder-shown~.form__label {
+      font-size: 17px;
+      cursor: text;
+      top: 20px;
+    }
+
+    .form__label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 17px;
+      color: #9b9b9b;
+      pointer-events: none;
+    }
+
+    .form__field:focus {
+      padding-bottom: 6px;
+      font-weight: 700;
+      border-width: 3px;
+      border-image: linear-gradient(to right, #116399, #38caef);
+      border-image-slice: 1;
+    }
+
+    .form__field:focus~.form__label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 17px;
+      color: #38caef;
+      font-weight: 700;
+    }
+
+    /* reset input */
+    .form__field:required,
+    .form__field:invalid {
+      box-shadow: none;
+      color: black;
+    }
+
+    .fourcont {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 2rem;
+      justify-content: space-evenly;
+    }
+
+    .boxitem {
+      width: 390px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .boxitem img {
+      width: 100%;
+      height: 240px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .boxdesc {
+      padding: 10px;
+    }
+
+    /* packages css */
+    .pcard {
+      width: 385px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 50px;
+    }
+
+    .pcard img {
+      width: 100%;
+      height: 250px;
+      border-radius: 10px;
+    }
+
+    .pcard-inner {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 5px;
+    }
+
+    .pcard ul {
+      display: grid;
+      grid-template-columns: 49% 49%;
+      gap: 5px;
+      justify-content: space-around;
+      margin-bottom: 5px;
+    }
+
+    .pcard-bottom {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 13px 0;
+      background-color: rgb(237, 237, 237);
+      border-radius: 10px;
+    }
+    .threecon .card:hover,
+    .pcard:hover,
+    .rbox:hover,
+    .item:hover,
+    .boxitem:hover,
+    .room:hover,
+    .blog3 .card:hover {
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+    }
+
+    .item {
+      width: 360px;
+      padding: 10px;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+      margin: 40px;
+    }
+
+    .item img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .rhead {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .rhead img {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .rhead h2 {
+      display: flex;
+      align-items: center;
+    }
+
+    /* old reviews */
+
+    .rbox {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      margin: 40px;
+    }
+
+    .rbox .rimg {
+      margin-top: 10px;
+    }
+
+    .rbox .rimg img {
+
+      width: 54%;
+      display: inherit;
+      margin: auto;
+      height: 200px;
+      border: 3px solid white;
+      border-radius: 50%;
+    }
+
+    .rcontent {
+      padding-left: 15px;
+    }
+
+    .addreview {
+      width: 70%;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+    }
+/* footer */
+    footer {
+      margin-top: 20px;
+      background: black;
+      padding-top: 15px;
+    }
+
+    .aboutb {
+      color: white;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .fdesc {
+      width: 60%;
+    }
+
+    .fnav {
+      border-left: 2px solid white;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .fnav a {
+      text-decoration: none;
+      color: white;
+      font-size: medium;
+    }
+
+    .fnav a:hover {
+      color: #00e6ff;
+    }
+
+    .bottomfooter {
+      display: flex;
+      justify-content: space-evenly;
+      padding-bottom: 15px;
+    }
+
+    .bottomfooter div i {
+      margin-right: 10px;
+    }
+
+    .bottomfooter div i:hover {
+      filter: drop-shadow(0px 0px 5px blue);
+      transform: scale(1.25);
+
+    }
+
+    .bottomfooter div i:nth-child(4):hover {
+      filter: drop-shadow(0px 0px 5px red);
+      transform: scale(1.25);
+    }
+/* blog section  */
+    .blog1 {
+      background: url(/static/blog1.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 15px;
+      width: 60%;
+      margin: auto;
+      height: 500px;
+      margin-bottom: 50px;
+    }
+
+    .blog1 .desc {
+      background: white;
+      position: absolute;
+      width: 30%;
+      margin-bottom: 0;
+      left: 20%;
+      padding: 10px;
+    }
+
+    .blog .threecon {
+      justify-content: space-evenly;
+      margin-block: 2rem;
+      gap: 2rem;
+      margin-bottom: 50px;
+    }
+
+    .blog .threecon img {
+      width: 100%;
+      height: 250px;
+    }
+
+    .blog .card {
+      display: flex;
+      flex-direction: column;
+      width: clamp(20rem, calc(20rem + 2vw), 22rem);
+      overflow: hidden;
+      width: 380px;
+      box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+      border-radius: 1em;
+      background: #ECE9E6;
+      background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+    }
+
+    .card__body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .card__body h4 {
+      font-size: 1.5rem;
+      text-transform: capitalize;
+    }
+
+    .card__footer {
+      display: flex;
+      padding: 1rem;
+      margin-top: auto;
+    }
+
+    .user {
+      display: flex;
+      gap: .5rem;
+    }
+
+    .user__info>small {
+      color: #666;
+    }
+
+    ::after {
+      color: black;
+    }
+    /* hotel page */
+    .hotelcont {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 20px;
+    }
+    .hotelcont .boxdesc {
+      width: 20%;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
+
+    .imgcontainer {
+      padding: 5px;
+      width: 50%;
+    }
+
+    .imgcontainer .mainimg {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 10px;
+    }
+
+    .imgcontainer .mainimg img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .imgcontainer .himg {
+      height: 150px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .imgcontainer .himg img {
+      width: 22%;
+      height: 100%;
+    }
+
+    .broom {
+      width: 80%;
+      margin: auto;
+      padding: 10px;
+    }
+
+    .room {
+      display: flex;
+      justify-content: space-evenly;
+      height: 250px;
+      margin-bottom: 20px;
+    }
+
+    .roomd {
+      width: 30%;
+      padding: 10px;
+    }
+
+    .roomd img {
+      width: 100%;
+      height: 100%;
+    }
+/* search page */
+    .simgcont {
+      display: grid;
+      grid-template-columns: 45% 45%;
+      justify-content: space-evenly;
+      padding: 20px;
+    }
+
+    .simgcont .smain {
+      height: 500px;
+    }
+
+    .simgcont .smain img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .simgcont .ssec {
+      height: 500px;
+      display: grid;
+      grid-template-columns: 45% 45%;
+      justify-content: space-evenly;
+    }
+
+    .simgcont .ssec img {
+      width: 100%;
+      height: 150px;
+    }
+    .reveal{
+      position: relative;
+      transform: translateY(150px);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    .reveal.active{
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media screen and (min-width:1024px) {
+      .navbar {
+        height: 57px;
+      }
+    }
+
+    @media screen and (min-width:767px) and (max-width: 1023px) {
+
+      .heading {
+        font-size: 60px;
+      }
+
+      .fourcont {
+        grid-template-columns: auto auto;
+      }
+
+      .hotelcont {
+        flex-direction: column;
+      }
+
+      .hotelcont .imgcontainer {
+        width: 95%;
+        margin: auto;
+      }
+
+      .hotelcont .boxdesc {
+        width: 95%;
+        margin: auto;
+      }
+
+      .broom {
+        width: 95%;
+      }
+
+      .broom .room {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .roomd {
+        width: 100%;
+      }
+
+      .roomd img {
+        width: 100%;
+        height: 250px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      #infoform {
+        top: 10%;
+        left: 2.5%;
+        width: 95%;
+      }
+
+      #infoform form {
+        grid-template-columns: 45% 45%;
+      }
+
+      .container {
+        flex-direction: column;
+      }
+
+      .heading {
+        font-size: 35px;
+      }
+
+      .container .forimg,
+      .forform {
+        width: 100%;
+      }
+
+      .fourcont {
+        grid-template-columns: auto;
+      }
+
+      .blog1 {
+        width: 95%;
+      }
+
+      .blog1 .desc {
+        left: 2.5%;
+      }
+
+      .hotelcont {
+        flex-direction: column;
+      }
+
+      .hotelcont .imgcontainer {
+        width: 95%;
+        margin: auto;
+      }
+
+      .hotelcont .boxdesc {
+        width: 95%;
+        margin: auto;
+      }
+
+      .broom {
+        width: 95%;
+      }
+
+      .broom .room {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .roomd {
+        width: 100%;
+      }
+
+      .roomd img {
+        width: 100%;
+        height: 250px;
+      }
+    }
+  </style>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg" aria-label="Thirteenth navbar example">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+        aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand col-lg-3 me-0" href="#"
+        style="font-family: 'Nunito Sans', sans-serif; font-size:xx-large;"><b><span
+            style="color: orangered;">M</span><span style="color: black">ake</span><span
+            style="color: orangered;">T</span><span style="color: black;">rips</span></b></a>
+      <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <ul class="navbar-nav col-lg-6 " style="justify-content: space-evenly;">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#book">Book</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#packages">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/home#reviews">Reviews</a>
+          </li>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end" style="right: 40px; position: absolute;">
+            <form class="d-flex" style="margin-right: 20px;" role="search" action="/search" method="POST">
+              {%csrf_token%}
+              <input class="form-control " required name="search_box"
+                style="border-radius: 2rem;  border-top-right-radius: 0;border-bottom-right-radius: 0;" type="search"
+                placeholder="Search Places" aria-label="Search">
+              <button class="btn"
+                style="margin-right: 2px; background: white; border: var(--bs-border-width) solid var(--bs-border-color); border-radius: 2rem; border-bottom-left-radius: 0;border-top-left-radius: 0;"
+                type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            {% if user.is_authenticated%}
+            <div class="dropdown">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="/static/caroline.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong style="color: black;"> {{ user.get_username|capfirst }} </strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Favourites</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li style="text-align: center;"><a class="btn btn-primary" style="border-radius: 2rem;"
+                    href="/Logout">LOGOUT</a></li>
+
+              </ul>
+            </div>
+            {% else %}
+            <a class="btn btn-primary" style="border-radius: 2rem;" href="/Login">LOGIN</a>
+            {% endif %}
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {%block body%}{% endblock body%}
+  <!-- footer  -->
+  <footer>
+    <div class="aboutb">
+      <div class="fdesc">
+        <h3>About</h3>
+        <p>
+          MakeTrips is a comprehensive tour planning website that aims to simplify the process of organizing and booking
+          trips for travelers. The platform offers a wide range of features and tools to assist users in creating
+          personalized itineraries, finding the best deals on flights and accommodations, and discovering unique
+          experiences at their chosen destinations.
+        </p>
+      </div>
+      <div class="fnav">
+        <a href="/home#home">Home</a>
+        <a href="/home#book">Book</a>
+        <a href="/home#gallery">Gallery</a>
+        <a href="/home#packages">Packages</a>
+        <a href="/home#reviews">Reviews</a>
+      </div>
+    </div>
+    <hr>
+    <div class="bottomfooter">
+      <span style="color: white;">Copyright &copy; MakeTrips</span>
+      <div>
+        <i class="fa-brands fa-facebook fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-twitter fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-linkedin fa-2xl" style="color: blue;"></i>
+        <i class="fa-brands fa-youtube fa-2xl" style="color: red;"></i>
+      </div>
+    </div>
+  </footer>
+
+  <!-- script -->
+
+  <script type="text/javascript">
+    window.addEventListener('scroll',reveal);
+    function reveal() {
+      var reveals=document.querySelectorAll('.reveal');
+      for (var i = 0; i < reveals.length; i++) {
+        var windowheight=window.innerHeight;
+        var revealtop=reveals[i].getBoundingClientRect().top;
+         var revealpoint=150;
+         if (revealtop<windowheight-revealpoint) {
+          reveals[i].classList.add('active'); 
+         }
+         else{
+          reveals[i].classList.remove('active'); 
+         }
+      }
+    }
+    function validateForm() {
+      var rating = document.forms["rform"]["rating"].value;
+      if (rating > 5) {
+        alert("Please rate between 0-5");
+        return false;
+      }
+    }
+    function fill() {
+      document.getElementById("travellerdetails").style.display = "block"
+    }
+    function closeform() {
+      document.getElementById("travellerdetails").style.display = "none"
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
